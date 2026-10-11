@@ -1,0 +1,197 @@
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.02s
+   Compiling bastionkv v0.1.0 (/workspace/scratch/84f9f46ed647/BastionKV)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.08s
+     Running unittests src/lib.rs (target/debug/deps/bastionkv-1f4c36c42979c10a)
+
+running 2 tests
+test codec::tests::castagnoli_known_vector ... ok
+test codec::tests::metadata_roundtrip_and_damage ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/bastionkv.rs (target/debug/deps/bastionkv-45550fe6c7799f93)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/cli.rs (target/debug/deps/cli-c718e6bcb19ae093)
+
+running 2 tests
+test cli_verify_corruption_nonzero_without_mutation ... ok
+test cli_natural_invocation_and_inspection ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/concurrency.rs (target/debug/deps/concurrency-1b97bbcd4a498c26)
+
+running 3 tests
+test concurrent_writers_one_serialization_winner ... ok
+test exhaustive_serialized_snapshot_checkpoint_orders ... ok
+test readers_writer_and_compactor ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/corruption.rs (target/debug/deps/corruption-1e076fca2bc55a4a)
+
+running 10 tests
+test checksum_valid_unsorted_record_index_is_rejected ... ok
+test duplicate_transaction_and_sequence_rollback_rejected ... ok
+test plausible_checksums_do_not_bypass_structural_validation ... ok
+test missing_manifest_or_referenced_file_is_not_implicitly_recreated ... ok
+test symlink_and_invalid_files_are_rejected ... ok
+test malicious_length_headers_and_metadata_never_allocate_unbounded ... ok
+test sequence_and_generation_exhaustion_never_wrap ... ok
+test every_wal_tail_cut_recovers_atomic_prefix_and_is_idempotent ... ok
+test segment_every_byte_cut_and_bit_flip_fail_closed ... ok
+test every_complete_wal_byte_flip_is_detected ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests/crash.rs (target/debug/deps/crash-be46dae302b8b6f4)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/reference.rs (target/debug/deps/reference-90981ef2390ffa8e)
+
+running 2 tests
+test stress_reference_oracle ... ignored, opt-in deterministic long-run stress
+test random_histories_reference_oracle ... ok
+
+test result: ok. 1 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.38s
+
+     Running tests/semantics.rs (target/debug/deps/semantics-6f978435184083a1)
+
+running 10 tests
+test conflict_including_disjoint_keys_and_empty_transaction ... ok
+test basic_binary_persistence_atomicity_and_rollback ... ok
+test live_state_overflow_is_atomic_and_does_not_poison ... ok
+test init_rejects_broken_lock_symlink_without_creating_target ... ok
+test oversized_staging_restores_previous_batch_entry ... ok
+test invalid_configuration_and_missing_path_fail_early ... ok
+test snapshot_resource_cap_and_drop_release ... ok
+test ranges_limits_and_stats ... ok
+test stale_and_unrelated_files_lifecycle ... ok
+test snapshot_visibility_delete_and_compaction ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+   Doc-tests bastionkv
+
+running 1 test
+test src/lib.rs - (line 4) - compile ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+   Compiling bastionkv v0.1.0 (/workspace/scratch/84f9f46ed647/BastionKV)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.22s
+     Running unittests src/lib.rs (target/debug/deps/bastionkv-d8850206d8d35829)
+
+running 2 tests
+test codec::tests::castagnoli_known_vector ... ok
+test codec::tests::metadata_roundtrip_and_damage ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/bastionkv.rs (target/debug/deps/bastionkv-e078945cdd3c63f9)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/bin/fault-worker.rs (target/debug/deps/bastionkv_fault_worker-7a4051949a7cc0b7)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/cli.rs (target/debug/deps/cli-4ab7ce840679db37)
+
+running 2 tests
+test cli_verify_corruption_nonzero_without_mutation ... ok
+test cli_natural_invocation_and_inspection ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+     Running tests/concurrency.rs (target/debug/deps/concurrency-37b9e098fa1a8a40)
+
+running 3 tests
+test concurrent_writers_one_serialization_winner ... ok
+test exhaustive_serialized_snapshot_checkpoint_orders ... ok
+test readers_writer_and_compactor ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/corruption.rs (target/debug/deps/corruption-eeba40cdee9e5a93)
+
+running 10 tests
+test missing_manifest_or_referenced_file_is_not_implicitly_recreated ... ok
+test checksum_valid_unsorted_record_index_is_rejected ... ok
+test duplicate_transaction_and_sequence_rollback_rejected ... ok
+test malicious_length_headers_and_metadata_never_allocate_unbounded ... ok
+test symlink_and_invalid_files_are_rejected ... ok
+test sequence_and_generation_exhaustion_never_wrap ... ok
+test plausible_checksums_do_not_bypass_structural_validation ... ok
+test segment_every_byte_cut_and_bit_flip_fail_closed ... ok
+test every_complete_wal_byte_flip_is_detected ... ok
+test every_wal_tail_cut_recovers_atomic_prefix_and_is_idempotent ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+     Running tests/crash.rs (target/debug/deps/crash-246b71226ee4d9f9)
+
+running 4 tests
+test cross_process_lock_release_after_forced_termination ... ok
+test compaction_crash_boundary_matrix_no_resurrection ... ok
+test commit_crash_boundary_matrix ... ok
+test injected_io_failures_poison_handle_and_recover_atomically ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+     Running tests/reference.rs (target/debug/deps/reference-06d925e1649b50fe)
+
+running 2 tests
+test stress_reference_oracle ... ignored, opt-in deterministic long-run stress
+test random_histories_reference_oracle ... ok
+
+test result: ok. 1 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 0.36s
+
+     Running tests/semantics.rs (target/debug/deps/semantics-9a701749de526a7c)
+
+running 10 tests
+test init_rejects_broken_lock_symlink_without_creating_target ... ok
+test conflict_including_disjoint_keys_and_empty_transaction ... ok
+test invalid_configuration_and_missing_path_fail_early ... ok
+test basic_binary_persistence_atomicity_and_rollback ... ok
+test oversized_staging_restores_previous_batch_entry ... ok
+test snapshot_resource_cap_and_drop_release ... ok
+test live_state_overflow_is_atomic_and_does_not_poison ... ok
+test ranges_limits_and_stats ... ok
+test stale_and_unrelated_files_lifecycle ... ok
+test snapshot_visibility_delete_and_compaction ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests bastionkv
+
+running 1 test
+test src/lib.rs - (line 4) - compile ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+
+    Checking bastionkv v0.1.0 (/workspace/scratch/84f9f46ed647/BastionKV)
+ Documenting bastionkv v0.1.0 (/workspace/scratch/84f9f46ed647/BastionKV)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.20s
+   Generated /workspace/scratch/84f9f46ed647/BastionKV/target/doc/bastionkv/index.html and 1 other file
+   Compiling bastionkv v0.1.0 (/workspace/scratch/84f9f46ed647/BastionKV)
+    Finished `release` profile [optimized] target(s) in 0.89s
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s
+permission denial UNVERIFIED under root; CI non-root exercises it
+Real short write, failed append, atomic prefix recovery, tail truncation: PASS
+   Packaging bastionkv v0.1.0 (/workspace/scratch/84f9f46ed647/BastionKV)
+    Packaged 56 files, 728.6KiB (164.1KiB compressed)
+   Verifying bastionkv v0.1.0 (/workspace/scratch/84f9f46ed647/BastionKV)
+   Compiling bastionkv v0.1.0 (/workspace/scratch/84f9f46ed647/BastionKV/target/package/bastionkv-0.1.0)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.71s

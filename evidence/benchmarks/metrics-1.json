@@ -1,0 +1,8 @@
+{
+  "before_compact_bytes": 1148716,
+  "wal_bytes_written": 1148628,
+  "after_compact_bytes": 145088,
+  "checkpoint_bytes_written": 725180,
+  "live_payload_bytes": 136000,
+  "storage_amplification_after_compaction": 1.0668235294117647
+}

@@ -27,4 +27,16 @@ with tempfile.TemporaryDirectory(prefix='bastion-os-fault-') as tmp:
         if os.geteuid()!=0: assert denied.returncode!=0
         else: print('permission denial UNVERIFIED under root; CI non-root exercises it')
     finally: os.chmod(db,0o700)
+    # Offline verification must need only read permission, including its shared LOCK.
+    for path in db.iterdir(): os.chmod(path,0o400)
+    os.chmod(db,0o500)
+    try:
+        readonly=run('verify',db)
+        assert readonly.returncode==0,readonly.stderr
+        if os.geteuid()!=0:
+            assert run('stats',db).returncode!=0,'writable open unexpectedly allowed'
+            print('Read-only offline verify and permission-denied writer: PASS')
+    finally:
+        os.chmod(db,0o700)
+        for path in db.iterdir(): os.chmod(path,0o600)
 print('Real short write, failed append, atomic prefix recovery, tail truncation: PASS')

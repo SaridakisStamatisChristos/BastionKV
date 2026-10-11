@@ -1,0 +1,19 @@
+{
+  "repository": "SaridakisStamatisChristos/BastionKV",
+  "commit": "1caa571cca7c5cae1033fdf77da788f420639a75",
+  "workflow_run": 38175852018,
+  "conclusion": "success",
+  "jobs": [
+    {
+      "id": 114577969199,
+      "toolchain": "1.89.0",
+      "conclusion": "success"
+    },
+    {
+      "id": 114577969300,
+      "toolchain": "1.99.0",
+      "conclusion": "success"
+    }
+  ],
+  "url": "https://github.com/SaridakisStamatisChristos/BastionKV/actions/runs/38175852018"
+}

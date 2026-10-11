@@ -30,12 +30,16 @@ fn lock(path: &Path, create: bool, shared: bool) -> Result<File> {
     if !create || fs::symlink_metadata(path.join("LOCK")).is_ok() {
         regular(&path.join("LOCK"))?;
     }
-    let f = OpenOptions::new()
-        .read(true)
-        .write(true)
-        .create(create)
-        .truncate(false)
-        .open(path.join("LOCK"))?;
+    let f = if shared {
+        regular(&path.join("LOCK"))?
+    } else {
+        OpenOptions::new()
+            .read(true)
+            .write(true)
+            .create(create)
+            .truncate(false)
+            .open(path.join("LOCK"))?
+    };
     let outcome = if shared {
         f.try_lock_shared()
     } else {

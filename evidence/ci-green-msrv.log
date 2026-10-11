@@ -1,0 +1,379 @@
+﻿2026-10-11T21:19:02.6946445Z Current runner version: '2.337.0'
+2026-10-11T21:19:02.6971766Z ##[group]Runner Image Provisioner
+2026-10-11T21:19:02.6972767Z Hosted Compute Agent
+2026-10-11T21:19:02.6973396Z Version: 20261002.596
+2026-10-11T21:19:02.6974114Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+2026-10-11T21:19:02.6974907Z Build Date: 2026-10-02T22:28:27Z
+2026-10-11T21:19:02.6975645Z Worker ID: {ab78e7a5-820a-4de1-8ae6-4b419b1869da}
+2026-10-11T21:19:02.6976432Z Region: centralus
+2026-10-11T21:19:02.6977016Z Cloud: Azure
+2026-10-11T21:19:02.6977648Z ##[endgroup]
+2026-10-11T21:19:02.6979611Z ##[group]Operating System
+2026-10-11T21:19:02.6980317Z Ubuntu
+2026-10-11T21:19:02.6980968Z 24.04.5
+2026-10-11T21:19:02.6981937Z LTS
+2026-10-11T21:19:02.6982795Z ##[endgroup]
+2026-10-11T21:19:02.6983691Z ##[group]Runner Image
+2026-10-11T21:19:02.6984378Z Image: ubuntu-24.04
+2026-10-11T21:19:02.6985048Z Version: 20261004.327.1
+2026-10-11T21:19:02.6986398Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-11T21:19:02.6988424Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+2026-10-11T21:19:02.6989499Z ##[endgroup]
+2026-10-11T21:19:02.6990670Z ##[group]GITHUB_TOKEN Permissions
+2026-10-11T21:19:02.6993153Z Contents: read
+2026-10-11T21:19:02.6993877Z Metadata: read
+2026-10-11T21:19:02.6994513Z ##[endgroup]
+2026-10-11T21:19:02.6996627Z Secret source: Actions
+2026-10-11T21:19:02.6997727Z Cache mode: write
+2026-10-11T21:19:02.6998829Z Prepare workflow directory
+2026-10-11T21:19:02.7347667Z Prepare all required actions
+2026-10-11T21:19:02.7398623Z Getting action download info
+2026-10-11T21:19:02.9958992Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-11T21:19:03.0879466Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-11T21:19:03.3066980Z Complete job name: linux (1.89.0)
+2026-10-11T21:19:03.3868628Z ##[group]Run actions/checkout@v4
+2026-10-11T21:19:03.3869575Z with:
+2026-10-11T21:19:03.3870111Z   repository: SaridakisStamatisChristos/BastionKV
+2026-10-11T21:19:03.3874530Z   token: ***
+2026-10-11T21:19:03.3875000Z   ssh-strict: true
+2026-10-11T21:19:03.3875460Z   ssh-user: git
+2026-10-11T21:19:03.3875933Z   persist-credentials: true
+2026-10-11T21:19:03.3876444Z   clean: true
+2026-10-11T21:19:03.3876906Z   sparse-checkout-cone-mode: true
+2026-10-11T21:19:03.3877444Z   fetch-depth: 1
+2026-10-11T21:19:03.3877897Z   fetch-tags: false
+2026-10-11T21:19:03.3878355Z   show-progress: true
+2026-10-11T21:19:03.3878813Z   lfs: false
+2026-10-11T21:19:03.3879238Z   submodules: false
+2026-10-11T21:19:03.3879715Z   set-safe-directory: true
+2026-10-11T21:19:03.3880230Z   allow-unsafe-pr-checkout: false
+2026-10-11T21:19:03.3881045Z ##[endgroup]
+2026-10-11T21:19:03.4914865Z Syncing repository: SaridakisStamatisChristos/BastionKV
+2026-10-11T21:19:03.4917009Z ##[group]Getting Git version info
+2026-10-11T21:19:03.4918701Z Working directory is '/home/runner/work/BastionKV/BastionKV'
+2026-10-11T21:19:03.4920377Z [command]/usr/bin/git version
+2026-10-11T21:19:03.5013588Z git version 2.55.0
+2026-10-11T21:19:03.5056333Z ##[endgroup]
+2026-10-11T21:19:03.5077217Z Temporarily overriding HOME='/home/runner/work/_temp/372fc7e1-354c-4f38-8ef6-6c663ecd87ca' before making global git config changes
+2026-10-11T21:19:03.5079507Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-11T21:19:03.5081391Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/BastionKV/BastionKV
+2026-10-11T21:19:03.5125705Z Deleting the contents of '/home/runner/work/BastionKV/BastionKV'
+2026-10-11T21:19:03.5135585Z ##[group]Initializing the repository
+2026-10-11T21:19:03.5136903Z [command]/usr/bin/git init /home/runner/work/BastionKV/BastionKV
+2026-10-11T21:19:03.5246785Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-11T21:19:03.5248662Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-11T21:19:03.5250682Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-11T21:19:03.5252301Z hint: call:
+2026-10-11T21:19:03.5253046Z hint:
+2026-10-11T21:19:03.5253962Z hint: 	git config --global init.defaultBranch <name>
+2026-10-11T21:19:03.5255085Z hint:
+2026-10-11T21:19:03.5256233Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-11T21:19:03.5257882Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-11T21:19:03.5259174Z hint:
+2026-10-11T21:19:03.5259926Z hint: 	git branch -m <name>
+2026-10-11T21:19:03.5260892Z hint:
+2026-10-11T21:19:03.5262311Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-11T21:19:03.5265587Z Initialized empty Git repository in /home/runner/work/BastionKV/BastionKV/.git/
+2026-10-11T21:19:03.5278010Z [command]/usr/bin/git remote add origin https://github.com/SaridakisStamatisChristos/BastionKV
+2026-10-11T21:19:03.5333652Z ##[endgroup]
+2026-10-11T21:19:03.5335165Z ##[group]Disabling automatic garbage collection
+2026-10-11T21:19:03.5337312Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-11T21:19:03.5372477Z ##[endgroup]
+2026-10-11T21:19:03.5373663Z ##[group]Setting up auth
+2026-10-11T21:19:03.5378993Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-11T21:19:03.5415975Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-11T21:19:03.5841838Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-11T21:19:03.5883144Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-11T21:19:03.6116464Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-11T21:19:03.6156608Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-11T21:19:03.6389349Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-11T21:19:03.6430823Z ##[endgroup]
+2026-10-11T21:19:03.6432115Z ##[group]Fetching the repository
+2026-10-11T21:19:03.6442269Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +1caa571cca7c5cae1033fdf77da788f420639a75:refs/remotes/origin/main
+2026-10-11T21:19:03.9626261Z From https://github.com/SaridakisStamatisChristos/BastionKV
+2026-10-11T21:19:03.9629098Z  * [new ref]         1caa571cca7c5cae1033fdf77da788f420639a75 -> origin/main
+2026-10-11T21:19:03.9635127Z ##[endgroup]
+2026-10-11T21:19:03.9637387Z ##[group]Determining the checkout info
+2026-10-11T21:19:03.9639819Z ##[endgroup]
+2026-10-11T21:19:03.9644118Z [command]/usr/bin/git sparse-checkout disable
+2026-10-11T21:19:03.9699929Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-11T21:19:03.9735939Z ##[group]Checking out the ref
+2026-10-11T21:19:03.9740624Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-11T21:19:03.9832587Z Switched to a new branch 'main'
+2026-10-11T21:19:03.9837529Z branch 'main' set up to track 'origin/main'.
+2026-10-11T21:19:03.9843867Z ##[endgroup]
+2026-10-11T21:19:03.9885916Z [command]/usr/bin/git log -1 --format=%H
+2026-10-11T21:19:03.9914182Z 1caa571cca7c5cae1033fdf77da788f420639a75
+2026-10-11T21:19:04.0192366Z ##[group]Run rustup toolchain install '1.89.0' --profile minimal --component rustfmt,clippy
+2026-10-11T21:19:04.0193799Z [36;1mrustup toolchain install '1.89.0' --profile minimal --component rustfmt,clippy[0m
+2026-10-11T21:19:04.0194731Z [36;1mrustup default '1.89.0'[0m
+2026-10-11T21:19:04.0455834Z shell: /usr/bin/bash -e {0}
+2026-10-11T21:19:04.0456835Z ##[endgroup]
+2026-10-11T21:19:04.1002260Z info: syncing channel updates for 1.89.0-x86_64-unknown-linux-gnu
+2026-10-11T21:19:04.3655158Z info: latest update on 2025-08-07 for version 1.89.0 (29483883e 2025-08-04)
+2026-10-11T21:19:04.3656713Z info: downloading 5 components
+2026-10-11T21:19:12.4807514Z 
+2026-10-11T21:19:12.4884275Z   1.89.0-x86_64-unknown-linux-gnu installed - rustc 1.89.0 (29483883e 2025-08-04)
+2026-10-11T21:19:12.4884746Z 
+2026-10-11T21:19:12.4990293Z info: using existing install for 1.89.0-x86_64-unknown-linux-gnu
+2026-10-11T21:19:12.4997254Z info: default toolchain set to 1.89.0-x86_64-unknown-linux-gnu
+2026-10-11T21:19:12.4997963Z 
+2026-10-11T21:19:12.5090176Z   1.89.0-x86_64-unknown-linux-gnu unchanged - rustc 1.89.0 (29483883e 2025-08-04)
+2026-10-11T21:19:12.5090724Z 
+2026-10-11T21:19:12.5147943Z ##[group]Run set -euo pipefail
+2026-10-11T21:19:12.5148354Z [36;1mset -euo pipefail[0m
+2026-10-11T21:19:12.5148661Z [36;1mmkdir -p evidence/ci[0m
+2026-10-11T21:19:12.5149057Z [36;1mbash scripts/check.sh 2>&1 | tee evidence/ci/check.log[0m
+2026-10-11T21:19:12.5216409Z shell: /usr/bin/bash -e {0}
+2026-10-11T21:19:12.5216737Z ##[endgroup]
+2026-10-11T21:19:12.6736772Z     Checking bastionkv v0.1.0 (/home/runner/work/BastionKV/BastionKV)
+2026-10-11T21:19:13.2845098Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.64s
+2026-10-11T21:19:13.3293569Z    Compiling bastionkv v0.1.0 (/home/runner/work/BastionKV/BastionKV)
+2026-10-11T21:19:15.3049399Z     Finished `test` profile [unoptimized + debuginfo] target(s) in 2.01s
+2026-10-11T21:19:15.3057127Z      Running unittests src/lib.rs (target/debug/deps/bastionkv-1efa6e2dc4a91912)
+2026-10-11T21:19:15.3068476Z 
+2026-10-11T21:19:15.3068701Z running 2 tests
+2026-10-11T21:19:15.3075622Z test codec::tests::castagnoli_known_vector ... ok
+2026-10-11T21:19:15.3076453Z test codec::tests::metadata_roundtrip_and_damage ... ok
+2026-10-11T21:19:15.3077051Z 
+2026-10-11T21:19:15.3077683Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-11T21:19:15.3078348Z 
+2026-10-11T21:19:15.3078930Z      Running unittests src/bin/bastionkv.rs (target/debug/deps/bastionkv-9a34a63a52af77e4)
+2026-10-11T21:19:15.3089223Z 
+2026-10-11T21:19:15.3089477Z running 0 tests
+2026-10-11T21:19:15.3089851Z 
+2026-10-11T21:19:15.3092171Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-11T21:19:15.3092901Z 
+2026-10-11T21:19:15.3093314Z      Running tests/cli.rs (target/debug/deps/cli-3069a7ad40d66dd8)
+2026-10-11T21:19:15.3101588Z 
+2026-10-11T21:19:15.3101780Z running 2 tests
+2026-10-11T21:19:15.3270755Z test cli_verify_corruption_nonzero_without_mutation ... ok
+2026-10-11T21:19:15.3404303Z test cli_natural_invocation_and_inspection ... ok
+2026-10-11T21:19:15.3404812Z 
+2026-10-11T21:19:15.3405293Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+2026-10-11T21:19:15.3405858Z 
+2026-10-11T21:19:15.3406794Z      Running tests/concurrency.rs (target/debug/deps/concurrency-30a0853fc136d5b1)
+2026-10-11T21:19:15.3416357Z 
+2026-10-11T21:19:15.3416552Z running 3 tests
+2026-10-11T21:19:15.3472109Z test concurrent_writers_one_serialization_winner ... ok
+2026-10-11T21:19:15.4295659Z test exhaustive_serialized_snapshot_checkpoint_orders ... ok
+2026-10-11T21:19:15.4412712Z test readers_writer_and_compactor ... ok
+2026-10-11T21:19:15.4413130Z 
+2026-10-11T21:19:15.4413545Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+2026-10-11T21:19:15.4414021Z 
+2026-10-11T21:19:15.4416795Z      Running tests/corruption.rs (target/debug/deps/corruption-3359728ab9079c84)
+2026-10-11T21:19:15.4428964Z 
+2026-10-11T21:19:15.4429625Z running 10 tests
+2026-10-11T21:19:15.4510239Z test checksum_valid_unsorted_record_index_is_rejected ... ok
+2026-10-11T21:19:15.4517002Z test duplicate_transaction_and_sequence_rollback_rejected ... ok
+2026-10-11T21:19:15.4638340Z test missing_manifest_or_referenced_file_is_not_implicitly_recreated ... ok
+2026-10-11T21:19:15.4653575Z test malicious_length_headers_and_metadata_never_allocate_unbounded ... ok
+2026-10-11T21:19:15.4740343Z test plausible_checksums_do_not_bypass_structural_validation ... ok
+2026-10-11T21:19:15.4900142Z test sequence_and_generation_exhaustion_never_wrap ... ok
+2026-10-11T21:19:15.5011244Z test symlink_and_invalid_files_are_rejected ... ok
+2026-10-11T21:19:15.5248645Z test every_complete_wal_byte_flip_is_detected ... ok
+2026-10-11T21:19:15.5451208Z test segment_every_byte_cut_and_bit_flip_fail_closed ... ok
+2026-10-11T21:19:15.5655738Z test every_wal_tail_cut_recovers_atomic_prefix_and_is_idempotent ... ok
+2026-10-11T21:19:15.5656298Z 
+2026-10-11T21:19:15.5656780Z test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+2026-10-11T21:19:15.5657704Z 
+2026-10-11T21:19:15.5659786Z      Running tests/crash.rs (target/debug/deps/crash-0e9f74428b2035b5)
+2026-10-11T21:19:15.5671139Z 
+2026-10-11T21:19:15.5671338Z running 0 tests
+2026-10-11T21:19:15.5672039Z 
+2026-10-11T21:19:15.5674182Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-11T21:19:15.5674772Z 
+2026-10-11T21:19:15.5675267Z      Running tests/reference.rs (target/debug/deps/reference-30de42fbea84ae34)
+2026-10-11T21:19:15.5686395Z 
+2026-10-11T21:19:15.5686723Z running 2 tests
+2026-10-11T21:19:15.5689453Z test stress_reference_oracle ... ignored, opt-in deterministic long-run stress
+2026-10-11T21:19:17.7141063Z test random_histories_reference_oracle ... ok
+2026-10-11T21:19:17.7141882Z 
+2026-10-11T21:19:17.7142327Z test result: ok. 1 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 2.15s
+2026-10-11T21:19:17.7142859Z 
+2026-10-11T21:19:17.7144650Z      Running tests/semantics.rs (target/debug/deps/semantics-a0d85a32f1d1e5cb)
+2026-10-11T21:19:17.7156076Z 
+2026-10-11T21:19:17.7156262Z running 10 tests
+2026-10-11T21:19:17.7166798Z test init_rejects_broken_lock_symlink_without_creating_target ... ok
+2026-10-11T21:19:17.7191008Z test invalid_configuration_and_missing_path_fail_early ... ok
+2026-10-11T21:19:17.7197621Z test conflict_including_disjoint_keys_and_empty_transaction ... ok
+2026-10-11T21:19:17.7211891Z test basic_binary_persistence_atomicity_and_rollback ... ok
+2026-10-11T21:19:17.7219406Z test live_state_overflow_is_atomic_and_does_not_poison ... ok
+2026-10-11T21:19:17.7237877Z test oversized_staging_restores_previous_batch_entry ... ok
+2026-10-11T21:19:17.7243743Z test snapshot_resource_cap_and_drop_release ... ok
+2026-10-11T21:19:17.7273458Z test stale_and_unrelated_files_lifecycle ... ok
+2026-10-11T21:19:17.7274238Z test ranges_limits_and_stats ... ok
+2026-10-11T21:19:17.7335796Z test snapshot_visibility_delete_and_compaction ... ok
+2026-10-11T21:19:17.7336551Z 
+2026-10-11T21:19:17.7337100Z test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+2026-10-11T21:19:17.7337712Z 
+2026-10-11T21:19:17.7338610Z    Doc-tests bastionkv
+2026-10-11T21:19:17.7577514Z 
+2026-10-11T21:19:17.7578071Z running 1 test
+2026-10-11T21:19:17.7786711Z test src/lib.rs - (line 4) - compile ... ok
+2026-10-11T21:19:17.7787156Z 
+2026-10-11T21:19:17.7787450Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+2026-10-11T21:19:17.7787830Z 
+2026-10-11T21:19:17.7993599Z    Compiling bastionkv v0.1.0 (/home/runner/work/BastionKV/BastionKV)
+2026-10-11T21:19:20.1359584Z     Finished `test` profile [unoptimized + debuginfo] target(s) in 2.34s
+2026-10-11T21:19:20.1367012Z      Running unittests src/lib.rs (target/debug/deps/bastionkv-0f0c3b586a351134)
+2026-10-11T21:19:20.1377826Z 
+2026-10-11T21:19:20.1377996Z running 2 tests
+2026-10-11T21:19:20.1382355Z test codec::tests::castagnoli_known_vector ... ok
+2026-10-11T21:19:20.1383026Z test codec::tests::metadata_roundtrip_and_damage ... ok
+2026-10-11T21:19:20.1383438Z 
+2026-10-11T21:19:20.1383944Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-11T21:19:20.1384893Z 
+2026-10-11T21:19:20.1385261Z      Running unittests src/bin/bastionkv.rs (target/debug/deps/bastionkv-6b9a8dc1dc7f2d0f)
+2026-10-11T21:19:20.1393724Z 
+2026-10-11T21:19:20.1393949Z running 0 tests
+2026-10-11T21:19:20.1394189Z 
+2026-10-11T21:19:20.1394470Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-11T21:19:20.1394872Z 
+2026-10-11T21:19:20.1396748Z      Running unittests src/bin/fault-worker.rs (target/debug/deps/bastionkv_fault_worker-ded699729e0c469a)
+2026-10-11T21:19:20.1406232Z 
+2026-10-11T21:19:20.1406385Z running 0 tests
+2026-10-11T21:19:20.1406773Z 
+2026-10-11T21:19:20.1407084Z test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+2026-10-11T21:19:20.1407486Z 
+2026-10-11T21:19:20.1409185Z      Running tests/cli.rs (target/debug/deps/cli-20fce42a216eea4b)
+2026-10-11T21:19:20.1418517Z 
+2026-10-11T21:19:20.1418663Z running 2 tests
+2026-10-11T21:19:20.1506505Z test cli_verify_corruption_nonzero_without_mutation ... ok
+2026-10-11T21:19:20.1659714Z test cli_natural_invocation_and_inspection ... ok
+2026-10-11T21:19:20.1660294Z 
+2026-10-11T21:19:20.1660840Z test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+2026-10-11T21:19:20.1661622Z 
+2026-10-11T21:19:20.1662554Z      Running tests/concurrency.rs (target/debug/deps/concurrency-32801a40a5b1ba55)
+2026-10-11T21:19:20.1672489Z 
+2026-10-11T21:19:20.1672647Z running 3 tests
+2026-10-11T21:19:20.1724278Z test concurrent_writers_one_serialization_winner ... ok
+2026-10-11T21:19:20.2519091Z test exhaustive_serialized_snapshot_checkpoint_orders ... ok
+2026-10-11T21:19:20.2650869Z test readers_writer_and_compactor ... ok
+2026-10-11T21:19:20.2651603Z 
+2026-10-11T21:19:20.2652233Z test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+2026-10-11T21:19:20.2652929Z 
+2026-10-11T21:19:20.2655795Z      Running tests/corruption.rs (target/debug/deps/corruption-cb8a3bf7152c8e50)
+2026-10-11T21:19:20.2667489Z 
+2026-10-11T21:19:20.2667710Z running 10 tests
+2026-10-11T21:19:20.2720316Z test checksum_valid_unsorted_record_index_is_rejected ... ok
+2026-10-11T21:19:20.2727078Z test duplicate_transaction_and_sequence_rollback_rejected ... ok
+2026-10-11T21:19:20.2822893Z test missing_manifest_or_referenced_file_is_not_implicitly_recreated ... ok
+2026-10-11T21:19:20.2833225Z test malicious_length_headers_and_metadata_never_allocate_unbounded ... ok
+2026-10-11T21:19:20.2900709Z test plausible_checksums_do_not_bypass_structural_validation ... ok
+2026-10-11T21:19:20.2996065Z test sequence_and_generation_exhaustion_never_wrap ... ok
+2026-10-11T21:19:20.3083154Z test symlink_and_invalid_files_are_rejected ... ok
+2026-10-11T21:19:20.3305762Z test every_complete_wal_byte_flip_is_detected ... ok
+2026-10-11T21:19:20.3523686Z test segment_every_byte_cut_and_bit_flip_fail_closed ... ok
+2026-10-11T21:19:20.3739597Z test every_wal_tail_cut_recovers_atomic_prefix_and_is_idempotent ... ok
+2026-10-11T21:19:20.3740246Z 
+2026-10-11T21:19:20.3740727Z test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+2026-10-11T21:19:20.3741703Z 
+2026-10-11T21:19:20.3743717Z      Running tests/crash.rs (target/debug/deps/crash-97b68f62374e0438)
+2026-10-11T21:19:20.3755324Z 
+2026-10-11T21:19:20.3755519Z running 4 tests
+2026-10-11T21:19:20.9337389Z test commit_crash_boundary_matrix ... ok
+2026-10-11T21:19:22.0128760Z test compaction_crash_boundary_matrix_no_resurrection ... ok
+2026-10-11T21:19:22.0837536Z test injected_io_failures_poison_handle_and_recover_atomically ... ok
+2026-10-11T21:19:22.0894842Z test cross_process_lock_release_after_forced_termination ... ok
+2026-10-11T21:19:22.0899589Z 
+2026-10-11T21:19:22.0900344Z test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.71s
+2026-10-11T21:19:22.0901296Z 
+2026-10-11T21:19:22.0902232Z      Running tests/reference.rs (target/debug/deps/reference-1161b6fffcfb5a1c)
+2026-10-11T21:19:22.0914159Z 
+2026-10-11T21:19:22.0914726Z running 2 tests
+2026-10-11T21:19:22.0918886Z test stress_reference_oracle ... ignored, opt-in deterministic long-run stress
+2026-10-11T21:19:24.5506482Z test random_histories_reference_oracle ... ok
+2026-10-11T21:19:24.5507007Z 
+2026-10-11T21:19:24.5507416Z test result: ok. 1 passed; 0 failed; 1 ignored; 0 measured; 0 filtered out; finished in 2.46s
+2026-10-11T21:19:24.5507893Z 
+2026-10-11T21:19:24.5509431Z      Running tests/semantics.rs (target/debug/deps/semantics-233b7395fa344af2)
+2026-10-11T21:19:24.5521323Z 
+2026-10-11T21:19:24.5521829Z running 10 tests
+2026-10-11T21:19:24.5532945Z test init_rejects_broken_lock_symlink_without_creating_target ... ok
+2026-10-11T21:19:24.5561210Z test invalid_configuration_and_missing_path_fail_early ... ok
+2026-10-11T21:19:24.5566110Z test conflict_including_disjoint_keys_and_empty_transaction ... ok
+2026-10-11T21:19:24.5570352Z test basic_binary_persistence_atomicity_and_rollback ... ok
+2026-10-11T21:19:24.5591360Z test live_state_overflow_is_atomic_and_does_not_poison ... ok
+2026-10-11T21:19:24.5608679Z test oversized_staging_restores_previous_batch_entry ... ok
+2026-10-11T21:19:24.5622199Z test snapshot_resource_cap_and_drop_release ... ok
+2026-10-11T21:19:24.5641198Z test stale_and_unrelated_files_lifecycle ... ok
+2026-10-11T21:19:24.5656930Z test ranges_limits_and_stats ... ok
+2026-10-11T21:19:24.5729847Z test snapshot_visibility_delete_and_compaction ... ok
+2026-10-11T21:19:24.5730145Z 
+2026-10-11T21:19:24.5730413Z test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+2026-10-11T21:19:24.5730784Z 
+2026-10-11T21:19:24.5733125Z    Doc-tests bastionkv
+2026-10-11T21:19:24.5974649Z 
+2026-10-11T21:19:24.5975098Z running 1 test
+2026-10-11T21:19:24.6179136Z test src/lib.rs - (line 4) - compile ... ok
+2026-10-11T21:19:24.6179552Z 
+2026-10-11T21:19:24.6180024Z test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+2026-10-11T21:19:24.6180624Z 
+2026-10-11T21:19:24.6396954Z     Checking bastionkv v0.1.0 (/home/runner/work/BastionKV/BastionKV)
+2026-10-11T21:19:24.6399104Z  Documenting bastionkv v0.1.0 (/home/runner/work/BastionKV/BastionKV)
+2026-10-11T21:19:25.0838880Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.45s
+2026-10-11T21:19:25.0841096Z    Generated /home/runner/work/BastionKV/BastionKV/target/doc/bastionkv/index.html and 1 other file
+2026-10-11T21:19:25.1020894Z    Compiling bastionkv v0.1.0 (/home/runner/work/BastionKV/BastionKV)
+2026-10-11T21:19:26.3454084Z     Finished `release` profile [optimized] target(s) in 1.25s
+2026-10-11T21:19:26.3637379Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s
+2026-10-11T21:19:26.4141966Z Real short write, failed append, atomic prefix recovery, tail truncation: PASS
+2026-10-11T21:19:26.4394654Z    Packaging bastionkv v0.1.0 (/home/runner/work/BastionKV/BastionKV)
+2026-10-11T21:19:26.4460448Z     Packaged 45 files, 155.1KiB (45.1KiB compressed)
+2026-10-11T21:19:26.4461225Z    Verifying bastionkv v0.1.0 (/home/runner/work/BastionKV/BastionKV)
+2026-10-11T21:19:26.4767730Z    Compiling bastionkv v0.1.0 (/home/runner/work/BastionKV/BastionKV/target/package/bastionkv-0.1.0)
+2026-10-11T21:19:27.3907815Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.96s
+2026-10-11T21:19:27.3970524Z ##[group]Run cargo run --locked --example transactions -- "$RUNNER_TEMP/bastion-demo"
+2026-10-11T21:19:27.3971156Z [36;1mcargo run --locked --example transactions -- "$RUNNER_TEMP/bastion-demo"[0m
+2026-10-11T21:19:27.4035422Z shell: /usr/bin/bash -e {0}
+2026-10-11T21:19:27.4035677Z ##[endgroup]
+2026-10-11T21:19:27.4284012Z     Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s
+2026-10-11T21:19:27.4287158Z      Running `target/debug/examples/transactions /home/runner/work/_temp/bastion-demo`
+2026-10-11T21:19:27.4343147Z snapshot=[([108, 101, 102, 116], [111, 108, 100]), ([114, 105, 103, 104, 116], [111, 108, 100])] current=[([108, 101, 102, 116], [110, 101, 119])]
+2026-10-11T21:19:27.4396410Z ##[group]Run python3 scripts/bench.py --n 256 --runs 3 --output evidence/ci/benchmarks
+2026-10-11T21:19:27.4397218Z [36;1mpython3 scripts/bench.py --n 256 --runs 3 --output evidence/ci/benchmarks[0m
+2026-10-11T21:19:27.4487223Z shell: /usr/bin/bash -e {0}
+2026-10-11T21:19:27.4487739Z ##[endgroup]
+2026-10-11T21:19:27.5162456Z    Compiling bastionkv v0.1.0 (/home/runner/work/BastionKV/BastionKV)
+2026-10-11T21:19:27.9540080Z     Finished `release` profile [optimized] target(s) in 0.44s
+2026-10-11T21:19:29.8862044Z Captured 3 runs, 256 keys, 42 workload summaries in /home/runner/work/BastionKV/BastionKV/evidence/ci/benchmarks
+2026-10-11T21:19:29.9011174Z ##[group]Run actions/upload-artifact@v4
+2026-10-11T21:19:29.9011794Z with:
+2026-10-11T21:19:29.9012020Z   name: assurance-1.89.0
+2026-10-11T21:19:29.9012259Z   path: evidence/ci/
+2026-10-11T21:19:29.9012480Z   if-no-files-found: error
+2026-10-11T21:19:29.9012712Z   compression-level: 6
+2026-10-11T21:19:29.9012932Z   overwrite: false
+2026-10-11T21:19:29.9013142Z   include-hidden-files: false
+2026-10-11T21:19:29.9013399Z ##[endgroup]
+2026-10-11T21:19:30.0702643Z (node:4752) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-11T21:19:30.0703535Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-11T21:19:30.0803951Z With the provided path, there will be 12 files uploaded
+2026-10-11T21:19:30.0809312Z Artifact name is valid!
+2026-10-11T21:19:30.0810657Z Root directory input is valid!
+2026-10-11T21:19:30.3529677Z Beginning upload of artifact content to blob storage
+2026-10-11T21:19:30.3932848Z (node:4752) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-11T21:19:30.5846495Z Uploaded bytes 40080
+2026-10-11T21:19:30.6334090Z Finished uploading artifact content to blob storage!
+2026-10-11T21:19:30.6335141Z SHA256 digest of uploaded artifact zip is eaaa3518fd928ee153e6fe52c05fc55ba650f2ba9bf25400453d013249c0a44f
+2026-10-11T21:19:30.6337381Z Finalizing artifact upload
+2026-10-11T21:19:30.8842191Z Artifact assurance-1.89.0.zip successfully finalized. Artifact ID 11715318931
+2026-10-11T21:19:30.8843425Z Artifact assurance-1.89.0 has been successfully uploaded! Final size is 40080 bytes. Artifact ID is 11715318931
+2026-10-11T21:19:30.8862692Z Artifact download URL: https://github.com/SaridakisStamatisChristos/BastionKV/actions/runs/38175852018/artifacts/11715318931
+2026-10-11T21:19:30.9096185Z Post job cleanup.
+2026-10-11T21:19:30.9933998Z [command]/usr/bin/git version
+2026-10-11T21:19:30.9979562Z git version 2.55.0
+2026-10-11T21:19:31.0020799Z Temporarily overriding HOME='/home/runner/work/_temp/59677d94-1294-4fa7-88b7-9a3dd19f9ed5' before making global git config changes
+2026-10-11T21:19:31.0022456Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-11T21:19:31.0027885Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/BastionKV/BastionKV
+2026-10-11T21:19:31.0070417Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-11T21:19:31.0109142Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-11T21:19:31.0364667Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-11T21:19:31.0398904Z http.https://github.com/.extraheader
+2026-10-11T21:19:31.0416476Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-11T21:19:31.0454202Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-11T21:19:31.0715314Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-11T21:19:31.0755672Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-11T21:19:31.1205683Z Cleaning up orphan processes
+2026-10-11T21:19:31.1545115Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

@@ -252,6 +252,47 @@ mod tests {
         assert_eq!(crc(b"123456789"), 0xe3069283);
     }
     #[test]
+    fn frame_roundtrip_with_binary_empty_values_and_tombstones() {
+        let cfg = Config::default();
+        for seed in 0..32u64 {
+            let mut expected = Batch::new();
+            for n in 0..16u64 {
+                let key = (seed * 16 + n).to_be_bytes().to_vec();
+                let value = if n.is_multiple_of(3) {
+                    None
+                } else {
+                    Some((0..(n * 7)).map(|i| (i ^ seed) as u8).collect())
+                };
+                expected.insert(key, value);
+            }
+            expected.insert(vec![0, 255], Some(Vec::new()));
+            let bytes = encode(seed + 1, &expected, false, &cfg).unwrap();
+            let path =
+                std::env::temp_dir().join(format!("bastion-frame-{}-{seed}", std::process::id()));
+            let mut writer = std::fs::OpenOptions::new()
+                .write(true)
+                .create_new(true)
+                .open(&path)
+                .unwrap();
+            std::io::Write::write_all(&mut writer, &bytes).unwrap();
+            drop(writer);
+            let mut reader = File::open(&path).unwrap();
+            let ReadFrame::Complete(frame) =
+                read_frame(&mut reader, "roundtrip", false, &cfg).unwrap()
+            else {
+                panic!("complete encoded frame expected");
+            };
+            assert_eq!(frame.seq, seed + 1);
+            assert_eq!(frame.batch, expected);
+            assert_eq!(frame.end, bytes.len() as u64);
+            assert!(matches!(
+                read_frame(&mut reader, "roundtrip", false, &cfg).unwrap(),
+                ReadFrame::End
+            ));
+            std::fs::remove_file(path).unwrap();
+        }
+    }
+    #[test]
     fn metadata_roundtrip_and_damage() {
         let c = Config::default();
         let b = metadata(2, 19, &c);

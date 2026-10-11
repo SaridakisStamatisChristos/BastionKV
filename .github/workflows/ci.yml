@@ -19,6 +19,8 @@ jobs:
         toolchain: ['1.89.0', stable]
     steps:
       - uses: actions/checkout@v4
+      - name: Repository evidence integrity
+        run: python3 scripts/evidence.py
       - name: Toolchain
         run: |
           rustup toolchain install '${{ matrix.toolchain }}' --profile minimal --component rustfmt,clippy

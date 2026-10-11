@@ -30,6 +30,18 @@ fn worker(t: &Temp, mode: &str, env: &str, point: &str) -> std::process::ExitSta
         .status()
         .unwrap()
 }
+fn assert_abort(status: std::process::ExitStatus, point: &str) {
+    assert!(!status.success(), "point not reached {point}");
+    #[cfg(unix)]
+    {
+        use std::os::unix::process::ExitStatusExt;
+        assert_eq!(
+            status.signal(),
+            Some(6),
+            "expected SIGABRT at {point}, got {status}"
+        );
+    }
+}
 fn atomic(t: &Temp, must_new: bool, must_old: bool) {
     bastionkv::verify(t.db()).unwrap();
     let db = Database::open(t.db()).unwrap();
@@ -58,10 +70,7 @@ fn commit_crash_boundary_matrix() {
         "after_publish",
     ] {
         let t = setup();
-        assert!(
-            !worker(&t, "batch", "BASTIONKV_CRASH", point).success(),
-            "point not reached {point}"
-        );
+        assert_abort(worker(&t, "batch", "BASTIONKV_CRASH", point), point);
         atomic(
             &t,
             matches!(point, "after_wal_sync" | "before_publish" | "after_publish"),
@@ -90,10 +99,7 @@ fn compaction_crash_boundary_matrix_no_resurrection() {
         db.put(b"left", b"latest").unwrap();
         db.put(b"right", b"latest").unwrap();
         drop(db);
-        assert!(
-            !worker(&t, "compact", "BASTIONKV_CRASH", point).success(),
-            "point not reached {point}"
-        );
+        assert_abort(worker(&t, "compact", "BASTIONKV_CRASH", point), point);
         for _ in 0..2 {
             bastionkv::verify(t.db()).unwrap();
             let db = Database::open(t.db()).unwrap();

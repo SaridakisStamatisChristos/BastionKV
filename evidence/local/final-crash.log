@@ -1,0 +1,12 @@
+   Compiling bastionkv v0.1.0 (/workspace/scratch/84f9f46ed647/BastionKV)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.35s
+     Running tests/crash.rs (BastionKV/target/debug/deps/crash-97b68f62374e0438)
+
+running 4 tests
+test commit_crash_boundary_matrix ... ok
+test compaction_crash_boundary_matrix_no_resurrection ... ok
+test injected_io_failures_poison_handle_and_recover_atomically ... ok
+test cross_process_lock_release_after_forced_termination ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+

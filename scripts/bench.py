@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Capture raw benchmark samples, descriptive summaries, environment and SQLite calibration."""
-import argparse, csv, io, json, math, os, platform, sqlite3, subprocess, tempfile, time
+import argparse, csv, hashlib, io, json, math, os, platform, sqlite3, subprocess, tempfile, time
 from pathlib import Path
 p=argparse.ArgumentParser()
 p.add_argument('--output',default='evidence/benchmarks')
@@ -17,6 +17,7 @@ binaries=sorted(x for x in exe.glob('workloads-*') if x.is_file() and os.access(
 if len(binaries)!=1: raise RuntimeError('expected a clean single benchmark build; cargo clean before rerun if toolchains changed')
 metadata={'platform':platform.platform(),'machine':platform.machine(),'python':platform.python_version(),'sqlite':sqlite3.sqlite_version,
           'rustc':subprocess.check_output(['rustc','-Vv'],text=True),'cargo':subprocess.check_output(['cargo','-V'],text=True),
+          'source_files_sha256':{str(f.relative_to(root)):hashlib.sha256(f.read_bytes()).hexdigest() for f in sorted([*root.glob('src/**/*.rs'),*root.glob('benches/*.rs'),root/'Cargo.toml',root/'Cargo.lock',Path(__file__).resolve()])},
           'n':a.n,'runs':a.runs,'value_bytes':128,'key_bytes':8,'utc':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),
           'cpu':Path('/proc/cpuinfo').read_text() if Path('/proc/cpuinfo').exists() else 'unavailable',
           'filesystem':subprocess.check_output(['df','-T',tempfile.gettempdir()],text=True),

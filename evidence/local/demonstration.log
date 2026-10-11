@@ -1,0 +1,3 @@
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.00s
+     Running `BastionKV/target/debug/examples/transactions /tmp/bastion-demo-4d4yo23v/db`
+snapshot=[([108, 101, 102, 116], [111, 108, 100]), ([114, 105, 103, 104, 116], [111, 108, 100])] current=[([108, 101, 102, 116], [110, 101, 119])]
