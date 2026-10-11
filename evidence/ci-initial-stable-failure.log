@@ -1,0 +1,188 @@
+﻿2026-10-11T21:14:37.8832862Z Current runner version: '2.337.0'
+2026-10-11T21:14:37.8849563Z ##[group]Runner Image Provisioner
+2026-10-11T21:14:37.8850128Z Hosted Compute Agent
+2026-10-11T21:14:37.8850525Z Version: 20261002.596
+2026-10-11T21:14:37.8850972Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+2026-10-11T21:14:37.8851407Z Build Date: 2026-10-02T22:28:27Z
+2026-10-11T21:14:37.8851837Z Worker ID: {9e2dec9b-1821-4c31-bd3a-0e34757ef766}
+2026-10-11T21:14:37.8852265Z Region: westus3
+2026-10-11T21:14:37.8852824Z Cloud: Azure
+2026-10-11T21:14:37.8853224Z ##[endgroup]
+2026-10-11T21:14:37.8854013Z ##[group]Operating System
+2026-10-11T21:14:37.8854361Z Ubuntu
+2026-10-11T21:14:37.8854733Z 24.04.5
+2026-10-11T21:14:37.8855074Z LTS
+2026-10-11T21:14:37.8855443Z ##[endgroup]
+2026-10-11T21:14:37.8855770Z ##[group]Runner Image
+2026-10-11T21:14:37.8856124Z Image: ubuntu-24.04
+2026-10-11T21:14:37.8856514Z Version: 20261004.327.1
+2026-10-11T21:14:37.8857262Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261004.327/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-11T21:14:37.8858425Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261004.327
+2026-10-11T21:14:37.8858976Z ##[endgroup]
+2026-10-11T21:14:37.8859704Z ##[group]GITHUB_TOKEN Permissions
+2026-10-11T21:14:37.8860974Z Contents: read
+2026-10-11T21:14:37.8861376Z Metadata: read
+2026-10-11T21:14:37.8861710Z ##[endgroup]
+2026-10-11T21:14:37.8863134Z Secret source: Actions
+2026-10-11T21:14:37.8863733Z Cache mode: write
+2026-10-11T21:14:37.8864159Z Prepare workflow directory
+2026-10-11T21:14:37.9065035Z Prepare all required actions
+2026-10-11T21:14:37.9096195Z Getting action download info
+2026-10-11T21:14:38.2106297Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-11T21:14:38.2870393Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-11T21:14:38.5003301Z Complete job name: linux (stable)
+2026-10-11T21:14:38.5469172Z ##[group]Run actions/checkout@v4
+2026-10-11T21:14:38.5469597Z with:
+2026-10-11T21:14:38.5469868Z   repository: SaridakisStamatisChristos/BastionKV
+2026-10-11T21:14:38.5472037Z   token: ***
+2026-10-11T21:14:38.5472272Z   ssh-strict: true
+2026-10-11T21:14:38.5472711Z   ssh-user: git
+2026-10-11T21:14:38.5472955Z   persist-credentials: true
+2026-10-11T21:14:38.5473219Z   clean: true
+2026-10-11T21:14:38.5473462Z   sparse-checkout-cone-mode: true
+2026-10-11T21:14:38.5473745Z   fetch-depth: 1
+2026-10-11T21:14:38.5473978Z   fetch-tags: false
+2026-10-11T21:14:38.5474221Z   show-progress: true
+2026-10-11T21:14:38.5474463Z   lfs: false
+2026-10-11T21:14:38.5474689Z   submodules: false
+2026-10-11T21:14:38.5474935Z   set-safe-directory: true
+2026-10-11T21:14:38.5475214Z   allow-unsafe-pr-checkout: false
+2026-10-11T21:14:38.5475582Z ##[endgroup]
+2026-10-11T21:14:38.6129458Z Syncing repository: SaridakisStamatisChristos/BastionKV
+2026-10-11T21:14:38.6130928Z ##[group]Getting Git version info
+2026-10-11T21:14:38.6131592Z Working directory is '/home/runner/work/BastionKV/BastionKV'
+2026-10-11T21:14:38.6132413Z [command]/usr/bin/git version
+2026-10-11T21:14:38.6201891Z git version 2.55.0
+2026-10-11T21:14:38.6216480Z ##[endgroup]
+2026-10-11T21:14:38.6224153Z Temporarily overriding HOME='/home/runner/work/_temp/71f107e5-b30e-4ecb-a3df-8be34caab6db' before making global git config changes
+2026-10-11T21:14:38.6225383Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-11T21:14:38.6227579Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/BastionKV/BastionKV
+2026-10-11T21:14:38.6271456Z Deleting the contents of '/home/runner/work/BastionKV/BastionKV'
+2026-10-11T21:14:38.6274478Z ##[group]Initializing the repository
+2026-10-11T21:14:38.6277418Z [command]/usr/bin/git init /home/runner/work/BastionKV/BastionKV
+2026-10-11T21:14:38.6386819Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-11T21:14:38.6387945Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-11T21:14:38.6389054Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-11T21:14:38.6389704Z hint: call:
+2026-10-11T21:14:38.6390070Z hint:
+2026-10-11T21:14:38.6390532Z hint: 	git config --global init.defaultBranch <name>
+2026-10-11T21:14:38.6391075Z hint:
+2026-10-11T21:14:38.6393314Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-11T21:14:38.6394296Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-11T21:14:38.6395301Z hint:
+2026-10-11T21:14:38.6395795Z hint: 	git branch -m <name>
+2026-10-11T21:14:38.6396324Z hint:
+2026-10-11T21:14:38.6396978Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-11T21:14:38.6398084Z Initialized empty Git repository in /home/runner/work/BastionKV/BastionKV/.git/
+2026-10-11T21:14:38.6400201Z [command]/usr/bin/git remote add origin https://github.com/SaridakisStamatisChristos/BastionKV
+2026-10-11T21:14:38.6442979Z ##[endgroup]
+2026-10-11T21:14:38.6443777Z ##[group]Disabling automatic garbage collection
+2026-10-11T21:14:38.6445153Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-11T21:14:38.6472465Z ##[endgroup]
+2026-10-11T21:14:38.6473233Z ##[group]Setting up auth
+2026-10-11T21:14:38.6477340Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-11T21:14:38.6504334Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-11T21:14:38.6802845Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-11T21:14:38.6831690Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-11T21:14:38.6998940Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-11T21:14:38.7025339Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-11T21:14:38.7199153Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-11T21:14:38.7234133Z ##[endgroup]
+2026-10-11T21:14:38.7234872Z ##[group]Fetching the repository
+2026-10-11T21:14:38.7240474Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +f473b49b65f9ccef10ed6d4cf05c8517406e06c3:refs/remotes/origin/main
+2026-10-11T21:14:39.1978529Z From https://github.com/SaridakisStamatisChristos/BastionKV
+2026-10-11T21:14:39.2003773Z  * [new ref]         f473b49b65f9ccef10ed6d4cf05c8517406e06c3 -> origin/main
+2026-10-11T21:14:39.2006295Z ##[endgroup]
+2026-10-11T21:14:39.2007154Z ##[group]Determining the checkout info
+2026-10-11T21:14:39.2008214Z ##[endgroup]
+2026-10-11T21:14:39.2008838Z [command]/usr/bin/git sparse-checkout disable
+2026-10-11T21:14:39.2037253Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-11T21:14:39.2067319Z ##[group]Checking out the ref
+2026-10-11T21:14:39.2067872Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-11T21:14:39.2327074Z Switched to a new branch 'main'
+2026-10-11T21:14:39.2333138Z branch 'main' set up to track 'origin/main'.
+2026-10-11T21:14:39.2336800Z ##[endgroup]
+2026-10-11T21:14:39.2371077Z [command]/usr/bin/git log -1 --format=%H
+2026-10-11T21:14:39.2393431Z f473b49b65f9ccef10ed6d4cf05c8517406e06c3
+2026-10-11T21:14:39.2581240Z ##[group]Run rustup toolchain install 'stable' --profile minimal --component rustfmt,clippy
+2026-10-11T21:14:39.2582008Z [36;1mrustup toolchain install 'stable' --profile minimal --component rustfmt,clippy[0m
+2026-10-11T21:14:39.2582676Z [36;1mrustup default 'stable'[0m
+2026-10-11T21:14:39.2800108Z shell: /usr/bin/bash -e {0}
+2026-10-11T21:14:39.2800620Z ##[endgroup]
+2026-10-11T21:14:39.5069313Z info: syncing channel updates for stable-x86_64-unknown-linux-gnu
+2026-10-11T21:14:39.7078061Z info: latest update on 2026-10-01 for version 1.99.0 (b940084d7 2026-09-28)
+2026-10-11T21:14:39.7268694Z info: component clippy is up to date
+2026-10-11T21:14:39.7269686Z info: component rustfmt is up to date
+2026-10-11T21:14:39.7277514Z 
+2026-10-11T21:14:39.7343843Z   stable-x86_64-unknown-linux-gnu unchanged - rustc 1.99.0 (b940084d7 2026-09-28)
+2026-10-11T21:14:39.7344730Z 
+2026-10-11T21:14:39.7398993Z info: using existing install for stable-x86_64-unknown-linux-gnu
+2026-10-11T21:14:39.7409824Z info: default toolchain set to stable-x86_64-unknown-linux-gnu
+2026-10-11T21:14:39.7410534Z 
+2026-10-11T21:14:39.7471091Z   stable-x86_64-unknown-linux-gnu unchanged - rustc 1.99.0 (b940084d7 2026-09-28)
+2026-10-11T21:14:39.7471907Z 
+2026-10-11T21:14:39.7541714Z ##[group]Run set -euo pipefail
+2026-10-11T21:14:39.7542771Z [36;1mset -euo pipefail[0m
+2026-10-11T21:14:39.7543551Z [36;1mmkdir -p evidence/ci[0m
+2026-10-11T21:14:39.7544516Z [36;1mbash scripts/check.sh 2>&1 | tee evidence/ci/check.log[0m
+2026-10-11T21:14:39.7597490Z shell: /usr/bin/bash -e {0}
+2026-10-11T21:14:39.7598182Z ##[endgroup]
+2026-10-11T21:14:42.1783073Z     Checking bastionkv v0.1.0 (/home/runner/work/BastionKV/BastionKV)
+2026-10-11T21:14:46.3545820Z error: use of deprecated method `std::sync::atomic::Atomic::<usize>::fetch_update`: renamed to `try_update` for consistency
+2026-10-11T21:14:46.3546291Z    --> src/lib.rs:159:14
+2026-10-11T21:14:46.3546489Z     |
+2026-10-11T21:14:46.3546713Z 159 |             .fetch_update(Ordering::Relaxed, Ordering::Relaxed, |n| {
+2026-10-11T21:14:46.3547030Z     |              ^^^^^^^^^^^^
+2026-10-11T21:14:46.3599574Z     |
+2026-10-11T21:14:46.3599805Z     = note: `-D deprecated` implied by `-D warnings`
+2026-10-11T21:14:46.3600182Z     = help: to override `-D warnings` add `#[allow(deprecated)]`
+2026-10-11T21:14:46.3600437Z help: replace the use of the deprecated method
+2026-10-11T21:14:46.3600665Z     |
+2026-10-11T21:14:46.3600972Z 159 -             .fetch_update(Ordering::Relaxed, Ordering::Relaxed, |n| {
+2026-10-11T21:14:46.3601348Z 159 +             .try_update(Ordering::Relaxed, Ordering::Relaxed, |n| {
+2026-10-11T21:14:46.3601587Z     |
+2026-10-11T21:14:46.3601676Z 
+2026-10-11T21:14:47.2939261Z error: could not compile `bastionkv` (lib test) due to 1 previous error
+2026-10-11T21:14:47.2939760Z warning: build failed, waiting for other jobs to finish...
+2026-10-11T21:14:47.2940101Z error: could not compile `bastionkv` (lib) due to 1 previous error
+2026-10-11T21:14:47.3131684Z ##[error]Process completed with exit code 101.
+2026-10-11T21:14:47.3199866Z ##[group]Run actions/upload-artifact@v4
+2026-10-11T21:14:47.3200036Z with:
+2026-10-11T21:14:47.3200150Z   name: assurance-stable
+2026-10-11T21:14:47.3200277Z   path: evidence/ci/
+2026-10-11T21:14:47.3200401Z   if-no-files-found: error
+2026-10-11T21:14:47.3200532Z   compression-level: 6
+2026-10-11T21:14:47.3200663Z   overwrite: false
+2026-10-11T21:14:47.3200782Z   include-hidden-files: false
+2026-10-11T21:14:47.3200913Z ##[endgroup]
+2026-10-11T21:14:47.4140298Z (node:2126) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-11T21:14:47.4140902Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-11T21:14:47.4171412Z With the provided path, there will be 1 file uploaded
+2026-10-11T21:14:47.4174872Z Artifact name is valid!
+2026-10-11T21:14:47.4175391Z Root directory input is valid!
+2026-10-11T21:14:47.7368673Z Beginning upload of artifact content to blob storage
+2026-10-11T21:14:47.7469458Z (node:2126) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-11T21:14:47.9662991Z Uploaded bytes 521
+2026-10-11T21:14:48.0264150Z Finished uploading artifact content to blob storage!
+2026-10-11T21:14:48.0264937Z SHA256 digest of uploaded artifact zip is 95a1036de0adce95355a3ab05ec6da1945b464b699091b4566a487f638348545
+2026-10-11T21:14:48.0266075Z Finalizing artifact upload
+2026-10-11T21:14:48.2816096Z Artifact assurance-stable.zip successfully finalized. Artifact ID 11715423109
+2026-10-11T21:14:48.2816647Z Artifact assurance-stable has been successfully uploaded! Final size is 521 bytes. Artifact ID is 11715423109
+2026-10-11T21:14:48.2820442Z Artifact download URL: https://github.com/SaridakisStamatisChristos/BastionKV/actions/runs/38175545724/artifacts/11715423109
+2026-10-11T21:14:48.2967413Z Post job cleanup.
+2026-10-11T21:14:48.3509989Z [command]/usr/bin/git version
+2026-10-11T21:14:48.3541300Z git version 2.55.0
+2026-10-11T21:14:48.3565820Z Temporarily overriding HOME='/home/runner/work/_temp/2489289c-0885-446e-9965-c04ed370438f' before making global git config changes
+2026-10-11T21:14:48.3566553Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-11T21:14:48.3569018Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/BastionKV/BastionKV
+2026-10-11T21:14:48.3597345Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-11T21:14:48.3622797Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-11T21:14:48.3803957Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-11T21:14:48.3826160Z http.https://github.com/.extraheader
+2026-10-11T21:14:48.3834403Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-11T21:14:48.3859669Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-11T21:14:48.4052310Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-11T21:14:48.4085910Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-11T21:14:48.4355811Z Cleaning up orphan processes
+2026-10-11T21:14:48.4533124Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

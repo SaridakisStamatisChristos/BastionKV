@@ -27,7 +27,7 @@ pub(crate) fn regular(path: &Path) -> Result<File> {
     File::open(path).map_err(|e| Error::io(format!("open {}", path.display()), e))
 }
 fn lock(path: &Path, create: bool, shared: bool) -> Result<File> {
-    if !create || path.join("LOCK").try_exists()? {
+    if !create || fs::symlink_metadata(path.join("LOCK")).is_ok() {
         regular(&path.join("LOCK"))?;
     }
     let f = OpenOptions::new()

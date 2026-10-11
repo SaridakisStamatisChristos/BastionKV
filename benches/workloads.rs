@@ -39,7 +39,7 @@ fn run() -> Result<()> {
         Ok(())
     })?;
     samples("read_heavy_90", n, 1, |i| {
-        if i % 10 == 0 {
+        if i.is_multiple_of(10) {
             db.put(&key(i % n), &value)?;
         } else {
             db.get(&key(i % n))?;
@@ -47,7 +47,7 @@ fn run() -> Result<()> {
         Ok(())
     })?;
     samples("write_heavy_90", n, 1, |i| {
-        if i % 10 != 0 {
+        if !i.is_multiple_of(10) {
             db.put(&key(i % n), &value)?;
         } else {
             db.get(&key(i % n))?;

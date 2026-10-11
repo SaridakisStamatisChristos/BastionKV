@@ -154,12 +154,15 @@ impl Database {
     }
     pub fn begin_read(&self) -> Result<ReadTransaction> {
         let s = guard(&self.inner)?;
-        self.inner
-            .snapshots
-            .fetch_update(Ordering::Relaxed, Ordering::Relaxed, |n| {
-                (n < MAX_SNAPSHOTS).then_some(n + 1)
-            })
-            .map_err(|_| Error::ResourceLimit("128 concurrent read/write snapshots".into()))?;
+        // All increments run under the state mutex. Drops only decrement.
+        // A prior increment happens-before this load through mutex release/acquire;
+        // any concurrent decrement can only make this cap check conservative.
+        if self.inner.snapshots.load(Ordering::Relaxed) >= MAX_SNAPSHOTS {
+            return Err(Error::ResourceLimit(
+                "128 concurrent read/write snapshots".into(),
+            ));
+        }
+        self.inner.snapshots.fetch_add(1, Ordering::Relaxed);
         Ok(ReadTransaction {
             inner: self.inner.clone(),
             map: s.map.clone(),
@@ -342,7 +345,9 @@ impl WriteTransaction {
         s.state_bytes = codec::footprint(&next);
         s.map = Arc::new(next);
         s.seq = seq;
-        s.tombstones += self.batch.values().filter(|v| v.is_none()).count() as u64;
+        s.tombstones = s
+            .tombstones
+            .saturating_add(self.batch.values().filter(|v| v.is_none()).count() as u64);
         if let Err(e) = fault::point("after_publish") {
             s.poisoned = true;
             return Err(e);

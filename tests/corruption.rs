@@ -179,3 +179,61 @@ fn symlink_and_invalid_files_are_rejected() {
     fs::create_dir(t.db().join("MANIFEST")).unwrap();
     assert!(Database::open(t.db()).is_err());
 }
+#[test]
+fn checksum_valid_unsorted_record_index_is_rejected() {
+    let t = setup();
+    let wal = t.wal();
+    let mut b = fs::read(&wal).unwrap();
+    let first = 24 + u32::from_le_bytes(b[4..8].try_into().unwrap()) as usize;
+    let frame = &mut b[first..];
+    // Second frame's first key is left. Make it zzzz so the following right key is out of order.
+    frame[37..41].copy_from_slice(b"zzzz");
+    reseal(frame);
+    fs::write(wal, b).unwrap();
+    assert!(bastionkv::verify(t.db()).is_err());
+}
+#[test]
+fn sequence_and_generation_exhaustion_never_wrap() {
+    let t = setup();
+    let db = Database::open(t.db()).unwrap();
+    db.compact().unwrap();
+    drop(db);
+    let manifest = t.db().join("MANIFEST");
+    let mut m = fs::read(&manifest).unwrap();
+    m[20..28].copy_from_slice(&u64::MAX.to_le_bytes());
+    let c = crc(&m[..48]).to_le_bytes();
+    m[48..].copy_from_slice(&c);
+    fs::write(&manifest, m).unwrap();
+    let p = t.segment();
+    let mut s = fs::read(&p).unwrap();
+    s[12..20].copy_from_slice(&u64::MAX.to_le_bytes());
+    reseal(&mut s);
+    fs::write(p, s).unwrap();
+    let db = Database::open(t.db()).unwrap();
+    assert!(matches!(
+        db.put(b"x", b"y"),
+        Err(bastionkv::Error::Invariant(_))
+    ));
+    assert_eq!(db.statistics().unwrap().last_sequence, u64::MAX);
+    drop(db);
+    let mut m = fs::read(&manifest).unwrap();
+    let oldgen = u64::from_le_bytes(m[12..20].try_into().unwrap());
+    m[12..20].copy_from_slice(&u64::MAX.to_le_bytes());
+    let c = crc(&m[..48]).to_le_bytes();
+    m[48..].copy_from_slice(&c);
+    fs::write(manifest, m).unwrap();
+    fs::rename(
+        t.db().join(format!("wal-{oldgen:020}.bkw")),
+        t.db().join(format!("wal-{:020}.bkw", u64::MAX)),
+    )
+    .unwrap();
+    fs::rename(
+        t.db().join(format!("segment-{oldgen:020}.bks")),
+        t.db().join(format!("segment-{:020}.bks", u64::MAX)),
+    )
+    .unwrap();
+    let db = Database::open(t.db()).unwrap();
+    assert!(matches!(db.compact(), Err(bastionkv::Error::Invariant(_))));
+    drop(db);
+    assert_eq!(bastionkv::verify(t.db()).unwrap().last_sequence, u64::MAX);
+}

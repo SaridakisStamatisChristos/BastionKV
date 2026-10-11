@@ -26,7 +26,7 @@ fn campaign(seeds: u64, steps: usize) {
                     let mut next = oracle.clone();
                     for _ in 0..4 {
                         let k = (rng.next() % 17).to_be_bytes().to_vec();
-                        if rng.next() % 3 == 0 {
+                        if rng.next().is_multiple_of(3) {
                             tx.delete(&k).unwrap();
                             next.remove(&k);
                         } else {

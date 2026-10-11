@@ -70,7 +70,7 @@ fn concurrent_writers_one_serialization_winner() {
 }
 #[test]
 fn exhaustive_serialized_snapshot_checkpoint_orders() {
-    // Enumerate 24 topological schedules of publication/read registration/compaction/read use.
+    // Enumerate 12 valid schedules from 24 permutations of publication/read registration/compaction/read use.
     // Model oracle knows only whether registration preceded publication. Filesystem is exercised.
     for a in 0..4 {
         for b in 0..4 {

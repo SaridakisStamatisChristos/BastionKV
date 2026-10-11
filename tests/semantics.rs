@@ -146,3 +146,30 @@ fn stale_and_unrelated_files_lifecycle() {
     assert!(t.db().join("personal-notes").exists());
     drop(db);
 }
+#[test]
+fn oversized_staging_restores_previous_batch_entry() {
+    let t = Temp::new();
+    let cfg = Config {
+        max_key_bytes: 1,
+        max_value_bytes: 1,
+        max_frame_bytes: 100,
+        max_state_bytes: 18,
+    };
+    let db = Database::create(t.db(), cfg).unwrap();
+    let mut tx = db.begin_write().unwrap();
+    tx.put(b"a", b"1").unwrap();
+    assert!(tx.put(b"b", b"2").is_err());
+    assert_eq!(tx.get(b"a").unwrap(), Some(b"1".to_vec()));
+    assert_eq!(tx.get(b"b").unwrap(), None);
+    tx.commit().unwrap();
+}
+#[cfg(unix)]
+#[test]
+fn init_rejects_broken_lock_symlink_without_creating_target() {
+    let t = Temp::new();
+    std::fs::create_dir(t.db()).unwrap();
+    let target = t.0.join("outside");
+    std::os::unix::fs::symlink(&target, t.db().join("LOCK")).unwrap();
+    assert!(Database::create(t.db(), Config::default()).is_err());
+    assert!(!target.exists());
+}

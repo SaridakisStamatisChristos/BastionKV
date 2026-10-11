@@ -4,9 +4,321 @@
   "branch": "main",
   "baseline_commit": "e31e8d3b8774b48291adf91005fa30f57c068279",
   "phase": "VERIFY/FALSIFY",
-  "verdict": "SYNTHESIS COMPLETE — remote CI and evidence closure pending",
+  "verdict": "SYNTHESIS COMPLETE \u2014 remote CI and evidence closure pending",
   "local_target": "Linux x86_64, Rust 1.89.0",
-  "requirements": [],
-  "claims": [],
-  "gaps": ["Remote CI not yet observed", "Physical power-loss unverified", "Other platforms unverified"]
+  "requirements": [
+    {
+      "id": "R01",
+      "source": "USER",
+      "criticality": "HARD",
+      "implementation": [
+        "src/config.rs",
+        "src/error.rs",
+        "src/lib.rs"
+      ],
+      "evidence": [
+        "tests/semantics.rs",
+        "tests/cli.rs"
+      ],
+      "state": "VERIFIED",
+      "scope": "Linux x86_64 and documented filesystem assumptions"
+    },
+    {
+      "id": "R02",
+      "source": "USER",
+      "criticality": "HARD",
+      "implementation": [
+        "src/disk.rs",
+        "src/lib.rs"
+      ],
+      "evidence": [
+        "tests/crash.rs",
+        "tests/corruption.rs",
+        "scripts/os_faults.py"
+      ],
+      "state": "VERIFIED",
+      "scope": "Linux x86_64 and documented filesystem assumptions"
+    },
+    {
+      "id": "R03",
+      "source": "USER",
+      "criticality": "HARD",
+      "implementation": [
+        "src/lib.rs"
+      ],
+      "evidence": [
+        "tests/semantics.rs",
+        "tests/concurrency.rs",
+        "tests/reference.rs"
+      ],
+      "state": "VERIFIED",
+      "scope": "Linux x86_64 and documented filesystem assumptions"
+    },
+    {
+      "id": "R04",
+      "source": "USER",
+      "criticality": "HARD",
+      "implementation": [
+        "src/codec.rs",
+        "docs/storage-format.md"
+      ],
+      "evidence": [
+        "src/codec.rs::tests",
+        "tests/corruption.rs"
+      ],
+      "state": "VERIFIED",
+      "scope": "Linux x86_64 and documented filesystem assumptions"
+    },
+    {
+      "id": "R05",
+      "source": "USER",
+      "criticality": "HARD",
+      "implementation": [
+        "src/disk.rs"
+      ],
+      "evidence": [
+        "tests/corruption.rs",
+        "tests/reference.rs"
+      ],
+      "state": "VERIFIED",
+      "scope": "Linux x86_64 and documented filesystem assumptions"
+    },
+    {
+      "id": "R06",
+      "source": "USER",
+      "criticality": "HARD",
+      "implementation": [
+        "src/disk.rs"
+      ],
+      "evidence": [
+        "tests/crash.rs",
+        "tests/reference.rs",
+        "tests/semantics.rs"
+      ],
+      "state": "VERIFIED",
+      "scope": "Linux x86_64 and documented filesystem assumptions"
+    },
+    {
+      "id": "R07",
+      "source": "USER",
+      "criticality": "HARD",
+      "implementation": [
+        "src/lib.rs",
+        "src/disk.rs"
+      ],
+      "evidence": [
+        "tests/concurrency.rs",
+        "tests/crash.rs::cross_process_lock_release_after_forced_termination"
+      ],
+      "state": "VERIFIED",
+      "scope": "Linux x86_64 and documented filesystem assumptions"
+    },
+    {
+      "id": "R08",
+      "source": "USER",
+      "criticality": "HARD",
+      "implementation": [
+        "src/bin/bastionkv.rs",
+        "src/disk.rs"
+      ],
+      "evidence": [
+        "tests/cli.rs",
+        "tests/corruption.rs"
+      ],
+      "state": "VERIFIED",
+      "scope": "Linux x86_64 and documented filesystem assumptions"
+    },
+    {
+      "id": "R09",
+      "source": "USER",
+      "criticality": "HARD",
+      "implementation": [
+        "src/fault.rs",
+        "tests/"
+      ],
+      "evidence": [
+        "evidence/local/check.log",
+        "evidence/local/stress.log"
+      ],
+      "state": "VERIFIED",
+      "scope": "Linux x86_64 and documented filesystem assumptions"
+    },
+    {
+      "id": "R10",
+      "source": "USER",
+      "criticality": "HARD",
+      "implementation": [
+        "benches/workloads.rs",
+        "scripts/bench.py"
+      ],
+      "evidence": [
+        "evidence/benchmarks/"
+      ],
+      "state": "PARTIAL",
+      "scope": "Linux x86_64 and documented filesystem assumptions"
+    },
+    {
+      "id": "R11",
+      "source": "USER",
+      "criticality": "HARD",
+      "implementation": [
+        "src/config.rs",
+        "src/codec.rs",
+        "src/lib.rs"
+      ],
+      "evidence": [
+        "tests/semantics.rs",
+        "tests/corruption.rs"
+      ],
+      "state": "VERIFIED",
+      "scope": "Linux x86_64 and documented filesystem assumptions"
+    },
+    {
+      "id": "R12",
+      "source": "USER",
+      "criticality": "HARD",
+      "implementation": [
+        "README.md",
+        "docs/",
+        "examples/transactions.rs"
+      ],
+      "evidence": [
+        "evidence/local/check.log",
+        "tests/cli.rs"
+      ],
+      "state": "VERIFIED",
+      "scope": "Linux x86_64 and documented filesystem assumptions"
+    },
+    {
+      "id": "R13",
+      "source": "USER",
+      "criticality": "HARD",
+      "implementation": [
+        ".github/workflows/ci.yml",
+        "scripts/check.sh"
+      ],
+      "evidence": [
+        "evidence/local/check.log",
+        "GitHub workflow jobs"
+      ],
+      "state": "PARTIAL",
+      "scope": "Linux x86_64 and documented filesystem assumptions"
+    },
+    {
+      "id": "R14",
+      "source": "USER",
+      "criticality": "HARD",
+      "implementation": [
+        "evidence/",
+        "scripts/evidence.py"
+      ],
+      "evidence": [
+        "remote Git tree comparison",
+        "evidence/files.sha256"
+      ],
+      "state": "PARTIAL",
+      "scope": "Linux x86_64 and documented filesystem assumptions"
+    }
+  ],
+  "claims": [
+    {
+      "claim": "Atomic synchronous recovery of acknowledged multi-key commits",
+      "status": "demonstrated",
+      "implementation": [
+        "src/disk.rs",
+        "src/lib.rs"
+      ],
+      "evidence": [
+        "tests/crash.rs",
+        "tests/corruption.rs"
+      ],
+      "limitations": [
+        "successful fsync/rename assumptions; process crashes are not power cuts"
+      ]
+    },
+    {
+      "claim": "Stable snapshot point/scan visibility through writes and compaction",
+      "status": "demonstrated",
+      "implementation": [
+        "src/lib.rs"
+      ],
+      "evidence": [
+        "tests/semantics.rs",
+        "tests/concurrency.rs",
+        "tests/reference.rs"
+      ],
+      "limitations": [
+        "process-local, full-map retained versions, 128 slots"
+      ]
+    },
+    {
+      "claim": "Complete corruption and structural invalidity fail closed with bounded parser allocation",
+      "status": "demonstrated",
+      "implementation": [
+        "src/codec.rs",
+        "src/disk.rs"
+      ],
+      "evidence": [
+        "tests/corruption.rs"
+      ],
+      "limitations": [
+        "CRC not authentication; malicious valid rollback and directory-owner races excluded"
+      ]
+    },
+    {
+      "claim": "Crash-safe generation checkpoint and no delete resurrection",
+      "status": "demonstrated",
+      "implementation": [
+        "src/disk.rs"
+      ],
+      "evidence": [
+        "tests/crash.rs",
+        "tests/reference.rs"
+      ],
+      "limitations": [
+        "full explicit compaction; filesystem boundary assumptions"
+      ]
+    },
+    {
+      "claim": "Latest stable and MSRV CI green",
+      "status": "unverified",
+      "evidence": [
+        "initial run 38175545724 failed stable and passed MSRV; repairs await new run"
+      ]
+    },
+    {
+      "claim": "Physical power-loss, non-Linux portability, or performance superiority",
+      "status": "unverified",
+      "evidence": [],
+      "limitations": [
+        "not claimed; not acceptance targets"
+      ]
+    }
+  ],
+  "gaps": [
+    "Remote CI not yet observed",
+    "Physical power-loss unverified",
+    "Other platforms unverified"
+  ],
+  "assumptions": "docs/contract.md",
+  "repairs": "evidence/falsification.md",
+  "hash_manifest": "evidence/files.sha256",
+  "compatibility": [
+    {
+      "target": "Linux x86_64 Rust 1.89.0",
+      "state": "VERIFIED",
+      "evidence": "evidence/local/check.log"
+    },
+    {
+      "target": "Linux x86_64 Rust 1.99.0",
+      "state": "PARTIAL",
+      "evidence": "local Clippy passes; initial remote lane failed before repair"
+    },
+    {
+      "target": "Windows/macOS/other filesystems",
+      "state": "UNVERIFIED",
+      "reason": "outside declared target"
+    }
+  ],
+  "implementation_commit": "f473b49b65f9ccef10ed6d4cf05c8517406e06c3"
 }
