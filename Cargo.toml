@@ -1,0 +1,27 @@
+[package]
+name = "bastionkv"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.89"
+description = "An auditable synchronous embedded key-value engine"
+license-file = "LICENSE"
+repository = "https://github.com/SaridakisStamatisChristos/BastionKV"
+
+[features]
+fault-injection = []
+
+[[bin]]
+name = "bastionkv"
+path = "src/bin/bastionkv.rs"
+
+[[bench]]
+name = "workloads"
+harness = false
+
+[profile.release]
+overflow-checks = true
+
+[[bin]]
+name = "bastionkv-fault-worker"
+path = "src/bin/fault-worker.rs"
+required-features = ["fault-injection"]

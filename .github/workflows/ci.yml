@@ -1,0 +1,44 @@
+name: assurance
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      stress:
+        description: Run the deterministic long-run reference stress campaign
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        toolchain: ['1.89.0', stable]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Toolchain
+        run: |
+          rustup toolchain install '${{ matrix.toolchain }}' --profile minimal --component rustfmt,clippy
+          rustup default '${{ matrix.toolchain }}'
+      - name: Contract gates
+        run: |
+          set -euo pipefail
+          mkdir -p evidence/ci
+          bash scripts/check.sh 2>&1 | tee evidence/ci/check.log
+      - name: Executable demonstration
+        run: cargo run --locked --example transactions -- "$RUNNER_TEMP/bastion-demo"
+      - name: Calibration benchmarks
+        if: matrix.toolchain == '1.89.0'
+        run: python3 scripts/bench.py --n 256 --runs 3 --output evidence/ci/benchmarks
+      - name: Stress
+        if: inputs.stress && matrix.toolchain == 'stable'
+        run: cargo test --locked --all-features --test reference stress_reference_oracle -- --ignored
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: assurance-${{ matrix.toolchain }}
+          path: evidence/ci/
+          if-no-files-found: error

@@ -1,0 +1,11 @@
+# Durability boundary
+
+Only synchronous durability is implemented. Serialized commit: validate global base version → prepare bounded next map/frame → append complete frame → `File::sync_all` WAL → publish map/sequence under mutex → return success. The trailer is the transaction commit marker, protected by CRC; there is no separately acknowledged prefix. Prepared map allocation happens before durable I/O.
+
+A successful nonempty commit recovers fully after process termination. A call interrupted or returning an I/O error may recover entirely absent or entirely present, never as a partial batch. After WAL sync but before publication/return, recovery must include it. Before append or with an incomplete frame, it is absent. A complete unsynced frame may survive a process crash; power failure can discard it. I/O-failed handles reject subsequent operations until reopen, including stats/flush/new snapshots; already-held immutable reads remain usable. Drop is not a durability operation. `flush` resyncs the WAL, and commit never relies on Drop.
+
+Directory init/checkpoint sync each newly created required file, then sync directory entries before publishing the manifest. Manifest temp is synced, renamed within the same directory, then directory synced before deleting the old pair. Parent directory is synced when the database directory is created. Parents must already exist; recursive creation with unverified ancestor durability is not offered.
+
+Declared platform: Linux local filesystem honoring successful fsync and atomic same-directory rename. Storage hardware/filesystem/kernel must respect those semantics and retain synced data. Process-abort and short-write tests do not simulate power loss, torn sectors after successful fsync, controller cache lies, ENOSPC in every possible filesystem implementation, or network filesystems. No cross-platform power-loss claim is made. SQLite calibration is descriptive, not proof of device durability.
+
+Explicit failures: config/input/conflicts/resource bounds before append leave data unchanged and don't poison the handle. Possibly state-changing disk errors poison the handle even if the failure happened early; recovery resolves the outcome. Application retries require semantic reconciliation, since there is no durable client transaction ID/idempotency API. No silently relaxed modes or group commit.

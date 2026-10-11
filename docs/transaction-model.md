@@ -1,0 +1,11 @@
+# Transactions and MVCC
+
+Each successful nonempty transaction receives consecutive u64 sequence numbers. Empty transactions validate their snapshot but don't advance the sequence. The visibility serialization point is replacement of map+sequence under the single mutex, after WAL sync. Registration cannot observe the intermediate commit phase.
+
+A ReadTransaction retains an immutable map associated with V. Therefore point lookup and scan see exactly the last value/deletion at or before V, unaffected by later writes/compaction. Versions are retained by Arc until the last snapshot referencing them drops. The current map plus process-local retained historical maps are the MVCC representation, rather than per-key linked histories. Restart only restores the latest state; snapshot handles are not persistent.
+
+WriteTransaction reads its base map plus sorted staged PUT/DELETE changes (last write to a key wins). Its commit validates global sequence equality. All intervening nonempty commits conflict, including unrelated keys; read skew/write skew and write-write anomalies are avoided by conservative whole-version validation. This is more restrictive than conventional snapshot isolation and provides serializable successful transactions at the global version check. No range-predicate conflict metadata is needed. Compaction and flush do not advance logical sequence and do not introduce conflicts.
+
+An empty rollback/drop does not access disk. Delete of a missing key still commits a tombstone frame and advances sequence; later compaction removes it from the live checkpoint safely, since no old disk generation remains authoritative. Held snapshots store their own old values and cannot cause disk resurrection.
+
+Default parsing/state limits are persisted at init and read on open. Logical state charge is key+value+16 per live record, and staged key+optional value+16 per operation. It is an accounting budget, not an exact allocator/RSS cap. Replacing an over-budget staged operation restores its previous entry. Key/value validation applies before staging. Config caps key at 1MiB, value at 16MiB, payload at 256MiB and state at payload-12. Whole-map clone and prepared batches create bounded additional allocations; snapshots can multiply memory usage considerably.

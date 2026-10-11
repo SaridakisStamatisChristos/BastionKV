@@ -1,0 +1,3 @@
+# ADR 0001 — bounded immutable map versions
+
+Accepted. Use full immutable map versions rather than linked per-key history or a disk lookup index. Context: small auditable storage engine, required snapshots, atomic commits and crash-safe compaction. A single mutex publishes an Arc map after one WAL frame sync. Benefits: independent snapshot visibility, simple deletion and disk GC, no custom memory-order protocol, fixed generation replacement. Costs: O(n) cloning and memory multiplication; no large-data performance claim. Full checkpoint segment plus generation WAL satisfies durable append/recovery/rotation. Change this architecture only with new reference/crash/concurrency evidence; optimize performance after correctness.

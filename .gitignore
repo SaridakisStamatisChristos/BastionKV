@@ -1,0 +1,4 @@
+/target/
+*.db/
+/core
+__pycache__/
