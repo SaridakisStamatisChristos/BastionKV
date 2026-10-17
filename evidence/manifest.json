@@ -293,9 +293,21 @@
     "benchmark_data": "evidence/benchmarks/"
   },
   "historical_observations": {
+    "initial_repository_commit": "e31e8d3b8774b48291adf91005fa30f57c068279",
+    "implementation_commit": "f473b49b65f9ccef10ed6d4cf05c8517406e06c3",
+    "repair_commit": "1caa571cca7c5cae1033fdf77da788f420639a75",
+    "stable_failure_workflow_run": 38175545724,
+    "green_workflow_run": 38175852018,
     "stable_failure_log": "evidence/ci-initial-stable-failure.log",
     "green_msrv_log": "evidence/ci-green-msrv.log",
     "green_stable_log": "evidence/ci-green-stable.log",
     "ci_observation": "evidence/ci-observation.json"
+  },
+  "assurance_applicability": {
+    "network_auth_distributed": "not applicable: embedded local API/CLI; no server",
+    "third_party_rust_dependency_audit": "not applicable to Cargo dependencies: Cargo.lock contains only BastionKV",
+    "state_publication_model": "standard Mutex serialization; no custom lock-free database-state publication protocol",
+    "persisted_offset_index": "not present; records are bounded and replayed into the in-memory ordered map",
+    "background_compaction": "not present; compaction is explicit and synchronous"
   }
 }
