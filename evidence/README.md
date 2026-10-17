@@ -1,9 +1,23 @@
-# Evidence binding
+# Verification evidence
 
-manifest.json maps every hard contract group to implementation, actual tests and limitations. ci-observation.json and ci-green-*.log preserve the observed green repaired-implementation run at its exact commit. Initial stable failure remains in ci-initial-stable-failure.log; falsification.md records diagnosis and repairs.
+This directory binds BastionKV's correctness claims to concrete implementation, tests, benchmark data, historical CI observations, and file-integrity hashes.
 
-Local logs bind Linux x86_64, Rust 1.89.0/1.99.0, default/fault builds, package verification, true kernel short write, and the full stress campaign. Benchmark environment includes real per-source checksums; CSVs preserve individual samples, summaries are descriptive. The CPU/filesystem are a virtualized host and measurements imply no general hardware performance claim.
+- `manifest.json` maps the evergreen correctness contract to current implementation and evidence.
+- `verification-report.md` summarizes the retained verification scope and claim boundaries.
+- `adversarial-validation.md` records failure modes that led to material repairs.
+- `benchmarks/` contains raw samples, environment metadata, and descriptive summaries.
+- `ci-green-*.log`, `ci-initial-stable-failure.log`, and `ci-observation.json` preserve historical workflow observations at their recorded revisions.
+- `local/` contains retained local verification output.
+- `files.sha256` covers authored repository files except itself.
 
-files.sha256 covers every authored repository file except itself. Its own bytes are anchored by the enclosing Git commit. target/.git/__pycache__ and ephemeral evidence/ci outputs are excluded. Run `python3 scripts/evidence.py` from any directory to validate. CI validates this list before building a fresh checkout. Source/test hashes in manifest.json identify the observed implementation separately from later evidence-only changes. Final commit/run URLs can always be resolved from main and Actions; no guessed future commit hashes are embedded.
+Run:
 
-Power-cut experiments, other platforms, hostile directory ownership, and performance superiority remain explicitly unverified. No critical known engine defect remains concealed as a TODO. No release publication or deployment was performed.
+```sh
+python3 scripts/evidence.py
+```
+
+to validate the integrity list. The script excludes `.git`, `target`, `__pycache__`, the hash list itself, and ephemeral `evidence/ci` outputs. CI performs this check before compilation.
+
+Historical logs intentionally remain immutable evidence even when their wording reflects the environment or revision that produced them. Current acceptance always requires the live workflow to pass for the current revision.
+
+The evidence does not establish physical power-loss certification, hostile directory-owner safety, non-Linux durability, production certification, or performance superiority.

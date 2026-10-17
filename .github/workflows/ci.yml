@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       stress:
-        description: Run the deterministic long-run reference stress campaign
+        description: Run the deterministic long-run reference stress suite
         type: boolean
         default: false
 permissions:
@@ -25,7 +25,7 @@ jobs:
         run: |
           rustup toolchain install '${{ matrix.toolchain }}' --profile minimal --component rustfmt,clippy
           rustup default '${{ matrix.toolchain }}'
-      - name: Contract gates
+      - name: Verification suite
         run: |
           set -euo pipefail
           mkdir -p evidence/ci

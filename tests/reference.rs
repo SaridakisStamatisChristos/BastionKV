@@ -2,7 +2,8 @@ mod common;
 use bastionkv::{Config, Database};
 use common::{Rng, Temp};
 use std::collections::BTreeMap;
-fn campaign(seeds: u64, steps: usize) {
+
+fn run_reference_history(seeds: u64, steps: usize) {
     for seed in 1..=seeds {
         let t = Temp::new();
         let mut db = Database::create(t.db(), Config::default()).unwrap();
@@ -85,12 +86,14 @@ fn campaign(seeds: u64, steps: usize) {
         assert_eq!(bastionkv::verify(t.db()).unwrap().live_keys, oracle.len());
     }
 }
+
 #[test]
 fn random_histories_reference_oracle() {
-    campaign(32, 200);
+    run_reference_history(32, 200);
 }
+
 #[test]
 #[ignore = "opt-in deterministic long-run stress"]
 fn stress_reference_oracle() {
-    campaign(256, 5000);
+    run_reference_history(256, 5000);
 }

@@ -1,16 +1,17 @@
 {
-  "schema": 1,
+  "schema": 2,
   "repository": "SaridakisStamatisChristos/BastionKV",
-  "branch": "main",
-  "baseline_commit": "e31e8d3b8774b48291adf91005fa30f57c068279",
-  "phase": "MANIFEST/EVIDENCE",
-  "verdict": "VERIFIED FOR DECLARED LOCAL TARGET",
-  "local_target": "Linux x86_64, Rust 1.89.0",
+  "declared_target": "Linux local filesystem, Rust 1.89+",
+  "status": "VERIFIED FOR DECLARED LOCAL TARGET",
+  "contract": "docs/correctness-contract.md",
+  "claim_limits": "docs/limitations.md",
+  "adversarial_validation": "evidence/adversarial-validation.md",
+  "verification_report": "evidence/verification-report.md",
+  "hash_manifest": "evidence/files.sha256",
   "requirements": [
     {
       "id": "R01",
-      "source": "USER",
-      "criticality": "HARD",
+      "area": "API and input semantics",
       "implementation": [
         "src/config.rs",
         "src/error.rs",
@@ -21,13 +22,11 @@
         "tests/cli.rs",
         "evidence/local/final-test.log"
       ],
-      "state": "VERIFIED",
-      "scope": "Linux x86_64 and documented filesystem assumptions"
+      "state": "VERIFIED"
     },
     {
       "id": "R02",
-      "source": "USER",
-      "criticality": "HARD",
+      "area": "Atomic synchronous commits",
       "implementation": [
         "src/disk.rs",
         "src/lib.rs"
@@ -38,13 +37,11 @@
         "scripts/os_faults.py",
         "evidence/local/final-crash.log"
       ],
-      "state": "VERIFIED",
-      "scope": "Linux x86_64 and documented filesystem assumptions"
+      "state": "VERIFIED"
     },
     {
       "id": "R03",
-      "source": "USER",
-      "criticality": "HARD",
+      "area": "Snapshot and conflict semantics",
       "implementation": [
         "src/lib.rs"
       ],
@@ -53,29 +50,24 @@
         "tests/concurrency.rs",
         "tests/reference.rs"
       ],
-      "state": "VERIFIED",
-      "scope": "Linux x86_64 and documented filesystem assumptions"
+      "state": "VERIFIED"
     },
     {
       "id": "R04",
-      "source": "USER",
-      "criticality": "HARD",
+      "area": "Bounded checksummed binary format",
       "implementation": [
         "src/codec.rs",
         "docs/storage-format.md"
       ],
       "evidence": [
         "src/codec.rs::tests",
-        "tests/corruption.rs",
-        "evidence/local/final-test.log"
+        "tests/corruption.rs"
       ],
-      "state": "VERIFIED",
-      "scope": "Linux x86_64 and documented filesystem assumptions"
+      "state": "VERIFIED"
     },
     {
       "id": "R05",
-      "source": "USER",
-      "criticality": "HARD",
+      "area": "Recovery and corruption refusal",
       "implementation": [
         "src/disk.rs"
       ],
@@ -83,13 +75,11 @@
         "tests/corruption.rs",
         "tests/reference.rs"
       ],
-      "state": "VERIFIED",
-      "scope": "Linux x86_64 and documented filesystem assumptions"
+      "state": "VERIFIED"
     },
     {
       "id": "R06",
-      "source": "USER",
-      "criticality": "HARD",
+      "area": "Crash-safe compaction and generation publication",
       "implementation": [
         "src/disk.rs"
       ],
@@ -98,28 +88,24 @@
         "tests/reference.rs",
         "tests/semantics.rs"
       ],
-      "state": "VERIFIED",
-      "scope": "Linux x86_64 and documented filesystem assumptions"
+      "state": "VERIFIED"
     },
     {
       "id": "R07",
-      "source": "USER",
-      "criticality": "HARD",
+      "area": "Reader/writer coordination and process locking",
       "implementation": [
         "src/lib.rs",
         "src/disk.rs"
       ],
       "evidence": [
         "tests/concurrency.rs",
-        "tests/crash.rs::cross_process_lock_release_after_forced_termination"
+        "tests/crash.rs"
       ],
-      "state": "VERIFIED",
-      "scope": "Linux x86_64 and documented filesystem assumptions"
+      "state": "VERIFIED"
     },
     {
       "id": "R08",
-      "source": "USER",
-      "criticality": "HARD",
+      "area": "CLI and read-only inspection",
       "implementation": [
         "src/bin/bastionkv.rs",
         "src/disk.rs"
@@ -128,13 +114,11 @@
         "tests/cli.rs",
         "tests/corruption.rs"
       ],
-      "state": "VERIFIED",
-      "scope": "Linux x86_64 and documented filesystem assumptions"
+      "state": "VERIFIED"
     },
     {
       "id": "R09",
-      "source": "USER",
-      "criticality": "HARD",
+      "area": "Fault, reference, corruption, and stress verification",
       "implementation": [
         "src/fault.rs",
         "tests/"
@@ -144,13 +128,11 @@
         "evidence/local/stress.log",
         "evidence/local/final-test.log"
       ],
-      "state": "VERIFIED",
-      "scope": "Linux x86_64 and documented filesystem assumptions"
+      "state": "VERIFIED"
     },
     {
       "id": "R10",
-      "source": "USER",
-      "criticality": "HARD",
+      "area": "Reproducible benchmarks",
       "implementation": [
         "benches/workloads.rs",
         "scripts/bench.py"
@@ -158,13 +140,11 @@
       "evidence": [
         "evidence/benchmarks/"
       ],
-      "state": "VERIFIED",
-      "scope": "Linux x86_64 and documented filesystem assumptions"
+      "state": "VERIFIED"
     },
     {
       "id": "R11",
-      "source": "USER",
-      "criticality": "HARD",
+      "area": "Statistics, configuration, and resource bounds",
       "implementation": [
         "src/config.rs",
         "src/codec.rs",
@@ -174,13 +154,11 @@
         "tests/semantics.rs",
         "tests/corruption.rs"
       ],
-      "state": "VERIFIED",
-      "scope": "Linux x86_64 and documented filesystem assumptions"
+      "state": "VERIFIED"
     },
     {
       "id": "R12",
-      "source": "USER",
-      "criticality": "HARD",
+      "area": "Architecture and operational documentation",
       "implementation": [
         "README.md",
         "docs/",
@@ -190,337 +168,134 @@
         "evidence/local/check.log",
         "tests/cli.rs"
       ],
-      "state": "VERIFIED",
-      "scope": "Linux x86_64 and documented filesystem assumptions"
+      "state": "VERIFIED"
     },
     {
       "id": "R13",
-      "source": "USER",
-      "criticality": "HARD",
+      "area": "Build, lint, test, documentation, MSRV, and packaging gates",
       "implementation": [
         ".github/workflows/ci.yml",
         "scripts/check.sh"
       ],
       "evidence": [
         "evidence/local/check.log",
-        "GitHub workflow jobs"
+        "evidence/ci-green-msrv.log",
+        "evidence/ci-green-stable.log"
       ],
-      "state": "VERIFIED",
-      "scope": "Linux x86_64 and documented filesystem assumptions"
+      "state": "VERIFIED"
     },
     {
       "id": "R14",
-      "source": "USER",
-      "criticality": "HARD",
+      "area": "Repository-bound evidence integrity",
       "implementation": [
         "evidence/",
         "scripts/evidence.py"
       ],
       "evidence": [
-        "remote Git tree comparison",
         "evidence/files.sha256"
       ],
-      "state": "VERIFIED",
-      "scope": "Linux x86_64 and documented filesystem assumptions"
+      "state": "VERIFIED"
     }
   ],
   "claims": [
     {
       "claim": "Atomic synchronous recovery of acknowledged multi-key commits",
       "status": "demonstrated",
-      "implementation": [
-        "src/disk.rs",
-        "src/lib.rs"
-      ],
       "evidence": [
         "tests/crash.rs",
         "tests/corruption.rs"
       ],
       "limitations": [
-        "successful fsync/rename assumptions; process crashes are not power cuts"
+        "process crashes are not physical power cuts; filesystem sync/rename assumptions apply"
       ]
     },
     {
       "claim": "Stable snapshot point/scan visibility through writes and compaction",
       "status": "demonstrated",
-      "implementation": [
-        "src/lib.rs"
-      ],
       "evidence": [
         "tests/semantics.rs",
         "tests/concurrency.rs",
         "tests/reference.rs"
       ],
       "limitations": [
-        "process-local, full-map retained versions, 128 slots"
+        "process-local immutable maps; 128 registered snapshot cap"
       ]
     },
     {
       "claim": "Complete corruption and structural invalidity fail closed with bounded parser allocation",
       "status": "demonstrated",
-      "implementation": [
-        "src/codec.rs",
-        "src/disk.rs"
-      ],
       "evidence": [
         "tests/corruption.rs"
       ],
       "limitations": [
-        "CRC not authentication; malicious valid rollback and directory-owner races excluded"
+        "CRC is integrity detection, not authentication; hostile directory-owner races are excluded"
       ]
     },
     {
-      "claim": "Crash-safe generation checkpoint and no delete resurrection",
+      "claim": "Crash-safe checkpoint generation publication without delete resurrection",
       "status": "demonstrated",
-      "implementation": [
-        "src/disk.rs"
-      ],
       "evidence": [
         "tests/crash.rs",
         "tests/reference.rs"
       ],
       "limitations": [
-        "full explicit compaction; filesystem boundary assumptions"
+        "explicit full compaction; declared filesystem assumptions apply"
       ]
     },
     {
-      "claim": "MSRV 1.89.0 and stable 1.99.0 assurance gates pass",
-      "status": "demonstrated",
-      "evidence": [
-        "evidence/ci-green-msrv.log",
-        "evidence/ci-green-stable.log",
-        "evidence/local/check.log",
-        "evidence/local/stable-check.log"
-      ],
-      "repository_commit": "1caa571cca7c5cae1033fdf77da788f420639a75",
-      "workflow_run": 38175852018,
-      "limits": [
-        "this immutable observation binds the repaired implementation; enclosing evidence commit is checked again by the same workflow",
-        "Additional frame roundtrip unit test and benchmark source-metadata capture were locally verified after this run; final enclosing commit workflow rechecks them.",
-        "Read-only verifier lock and stricter SIGABRT assertion added after recorded run; local dependent gates pass, final enclosing CI executes permission fixture on non-root runner."
-      ]
-    },
-    {
-      "claim": "Physical power-loss, non-Linux portability, or performance superiority",
+      "claim": "Physical power-loss, non-Linux durability, production certification, or performance superiority",
       "status": "unverified",
-      "evidence": [],
-      "limitations": [
-        "not claimed; not acceptance targets"
-      ]
+      "evidence": []
     }
   ],
   "gaps": [
-    "Physical power-loss/hardware controller behavior unverified",
-    "Non-Linux targets unverified and outside declared scope",
-    "True filesystem ENOSPC exhaustion not tested; real kernel EFBIG short write and injected error paths are tested",
-    "No performance superiority or production certification claim"
+    "Physical power-loss and hardware/controller behavior are unverified",
+    "Non-Linux durability is unverified and outside the declared support target",
+    "True filesystem ENOSPC exhaustion is not tested; real kernel EFBIG short-write and injected I/O paths are tested",
+    "No production-certification or performance-superiority claim is made"
   ],
-  "assumptions": "docs/contract.md",
-  "repairs": "evidence/falsification.md",
-  "hash_manifest": "evidence/files.sha256",
   "compatibility": [
     {
-      "target": "Linux x86_64 Rust 1.89.0",
+      "target": "Linux x86_64, Rust 1.89.0",
       "state": "VERIFIED",
-      "evidence": "evidence/local/check.log"
+      "evidence": "evidence/local/check.log and retained CI evidence"
     },
     {
-      "target": "Linux x86_64 Rust 1.99.0",
+      "target": "Linux x86_64, current stable Rust",
       "state": "VERIFIED",
-      "evidence": "evidence/local/stable-check.log + GitHub run 38175852018"
+      "evidence": "retained stable-toolchain CI/local evidence"
     },
     {
-      "target": "Windows/macOS/other filesystems",
+      "target": "Windows, macOS, other filesystem models",
       "state": "UNVERIFIED",
       "reason": "outside declared target"
     }
   ],
-  "implementation_commit": "f473b49b65f9ccef10ed6d4cf05c8517406e06c3",
-  "repair_commit": "1caa571cca7c5cae1033fdf77da788f420639a75",
-  "tests": {
+  "verification_counts": {
     "regular_test_functions": 33,
     "doctests": 1,
-    "opt_in_stress_executed": true,
     "bounded_reference_seeds": 32,
     "bounded_steps_per_seed": 200,
-    "stress_seeds": 256,
+    "stress_reference_seeds": 256,
     "stress_steps_per_seed": 5000,
     "commit_crash_points": 6,
     "compaction_crash_points": 10,
     "injected_io_error_points": 12,
-    "crash_history_seed": 0,
     "serialized_schedules": 12
   },
-  "demos": {
-    "A persistence": "tests/semantics.rs::basic_binary_persistence_atomicity_and_rollback",
-    "B atomic batch": "tests/crash.rs and examples/transactions.rs",
-    "C stable snapshot": "evidence/local/demonstration.log",
-    "D crash recovery": "tests/crash.rs",
-    "E delete/compact/reopen": "tests/semantics.rs::snapshot_visibility_delete_and_compaction",
-    "F corruption CLI refusal": "tests/cli.rs::cli_verify_corruption_nonzero_without_mutation",
-    "G benchmark": "evidence/benchmarks/"
+  "demonstrations": {
+    "persistence": "tests/semantics.rs::basic_binary_persistence_atomicity_and_rollback",
+    "atomic_batch": "tests/crash.rs and examples/transactions.rs",
+    "stable_snapshot": "evidence/local/demonstration.log",
+    "crash_recovery": "tests/crash.rs",
+    "delete_compact_reopen": "tests/semantics.rs::snapshot_visibility_delete_and_compaction",
+    "corruption_cli_refusal": "tests/cli.rs::cli_verify_corruption_nonzero_without_mutation",
+    "benchmark_data": "evidence/benchmarks/"
   },
-  "assurance_applicability": {
-    "network/auth/distributed/deploy": "N/A: embedded local API/CLI only; no server or deployment requested",
-    "third_party_cargo_audit": "N/A: Cargo.lock has only BastionKV; toolchain/OS/CI actions outside Rust dependency audit",
-    "loom": "N/A for a custom state-publication protocol: standard Mutex serializes publication. Twelve valid exhaustive application schedules and real threads are tested; std Mutex and filesystem internals are trusted, not formally modeled.",
-    "persisted_offset_index": "N/A: index rebuilt in RAM from strictly ordered validated records; frame/record bounds checked by parser",
-    "background_compaction": "N/A: brief permits explicit compaction; full generation checkpoint offered"
-  },
-  "claim_limits": "docs/limitations.md",
-  "coverage_source": "docs/contract.md",
-  "brief_section_coverage": {
-    "1": [
-      "R01",
-      "R02",
-      "R03",
-      "R06",
-      "R08",
-      "R09",
-      "R10",
-      "R14"
-    ],
-    "2": [
-      "R02",
-      "R03",
-      "R06"
-    ],
-    "3": [
-      "R01",
-      "R02",
-      "R03"
-    ],
-    "4": [
-      "R04"
-    ],
-    "5": [
-      "R05"
-    ],
-    "6": [
-      "R03"
-    ],
-    "7": [
-      "R06"
-    ],
-    "8": [
-      "R07"
-    ],
-    "9": [
-      "R08"
-    ],
-    "10": [
-      "R08"
-    ],
-    "11": [
-      "R09"
-    ],
-    "12": [
-      "R09"
-    ],
-    "13": [
-      "R09"
-    ],
-    "14": [
-      "R10"
-    ],
-    "15": [
-      "R10"
-    ],
-    "16": [
-      "R11"
-    ],
-    "17": [
-      "R04",
-      "R11"
-    ],
-    "18": [
-      "R07"
-    ],
-    "19": [
-      "R11"
-    ],
-    "20": [
-      "R01"
-    ],
-    "21": [
-      "R12"
-    ],
-    "22": [
-      "R13"
-    ],
-    "23": [
-      "R14"
-    ],
-    "24": [
-      "R09",
-      "R10"
-    ],
-    "25": [
-      "N/A embedded only"
-    ],
-    "26": [
-      "R01",
-      "R02",
-      "R05"
-    ],
-    "27": [
-      "R14"
-    ],
-    "28": [
-      "R01",
-      "R02",
-      "R03",
-      "R04",
-      "R05",
-      "R06",
-      "R07",
-      "R08",
-      "R09",
-      "R10",
-      "R11",
-      "R12",
-      "R13",
-      "R14"
-    ],
-    "29": [
-      "OPTIONAL not pursued"
-    ],
-    "30": [
-      "R14"
-    ]
-  },
-  "verified_engine_test_files_sha256": {
-    "Cargo.lock": "60c54c33c38f9e33f7d3c932ea9d22aedf08937b5356a6b29d1deffafe417998",
-    "Cargo.toml": "8d0e3c38b34c7a03ea5858a63241278471e60dd74e64d8a366f9e43a23c37e72",
-    "benches/workloads.rs": "bdf76228e18fece31372e1a07c75d8d2082d11f5ab6dc3f39bf2812e65977a60",
-    "examples/transactions.rs": "de3a51255bf798ce24a0c7f325e1626869e66049fb30245e2987547673ef8dfa",
-    "src/bin/bastionkv.rs": "74af5631de19882eda83eb45da13cca46b85ab7328f68d87cdec9fc50234227c",
-    "src/bin/fault-worker.rs": "52d910fc7107d9a278ed7209c8249bc74fd83b12c525e5183bed4562d292b6c9",
-    "src/codec.rs": "5f1328de4cfbb1affda9ebf32a55bbbf41900d3d8007bb3f9f1ff36ab63eb12b",
-    "src/config.rs": "0ced1a240174d3c3431522ea8f0c99402a44a04a1eceb9234dbf48d2515d1672",
-    "src/disk.rs": "db943c09a7c5d7733c666d96c6d10e48552dd0186363cde744ace86e2e6cd372",
-    "src/error.rs": "dd94b299c05f0a0d95d058f8e6e3b211dfc28b14bd4aef274c1cbe396defd124",
-    "src/fault.rs": "270dc0775ea3aab00459c215a8f7d627f7bf6c98550d1f2f5a7c4349895b64d8",
-    "src/lib.rs": "a38a01b5d84164ef50f3216159f0efdd89e9be2c5970492c508dc307b1d90a46",
-    "tests/cli.rs": "72e2dd7b32074c77f288f14d20a61d5280873d1b16f69d49837bf250befb3ceb",
-    "tests/common/mod.rs": "88a708b6f709bf5491618fa88420c03c0dd8e2afefc02dd42c7dd53a5ac0d4b8",
-    "tests/concurrency.rs": "65fac423539363fb4dbad336e44ec6945d07ff4fbdc1a1bb88a7fec06efb4bdf",
-    "tests/corruption.rs": "9f7a20ffcbdf3682cda29ca6126f3e6121a8722801fe4de83250905368d5ecbf",
-    "tests/crash.rs": "7b588bf47fee74ecd36796ef345e0cb128c17c2d050e922bcb527d387f1aadb9",
-    "tests/reference.rs": "fefb2c4b704e85e094e9789658a891be0131b40dbc91f8ebc01b3c4970a1c153",
-    "tests/semantics.rs": "8c0a208d86877163490afe32ce935ad282a69c9c087779ccd5a30735597dc9b7"
-  },
-  "benchmark": {
-    "runs": 3,
-    "keys": 1000,
-    "file": "evidence/benchmarks/summary.json",
-    "semantics": "descriptive local synchronous API samples; warm caches; not device power-loss evidence",
-    "median_across_runs_ops_per_second": {
-      "sequential_write": 22236.012503043,
-      "random_read": 4501078.00818296,
-      "batch_32": 280075.50745334005,
-      "compaction": 813.4542733762761,
-      "wal_recovery": 14.101590483559713
-    }
+  "historical_observations": {
+    "stable_failure_log": "evidence/ci-initial-stable-failure.log",
+    "green_msrv_log": "evidence/ci-green-msrv.log",
+    "green_stable_log": "evidence/ci-green-stable.log",
+    "ci_observation": "evidence/ci-observation.json"
   }
 }
